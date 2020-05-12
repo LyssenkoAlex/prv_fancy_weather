@@ -34,7 +34,7 @@ ul li:not(:first-child) {
 .wrapper {
   display: grid;
   grid-gap: 5px;
-  margin: 5em;
+  margin: 3em;
 }
 
 .input_wrapper {
@@ -52,8 +52,8 @@ ul li:not(:first-child) {
 .info_card {
   border-radius: 0.5rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16), 0 3px 5px rgba(0, 0, 0, 0.23);
-  margin: 5rem 0;
-  padding: 3rem 5rem;
+  margin: 5rem 0 0.5rem;
+  padding: 3rem 3rem 0.5rem;
   text-align: center;
   font-size: 1.5em;
 }
@@ -80,7 +80,12 @@ ul li:not(:first-child) {
 
 .weatherForeCast {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.map {
+  background: aliceblue;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
