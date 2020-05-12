@@ -5,7 +5,8 @@ import {
 
 
 const initialState = {
-    language:'RU'
+    language:'RU',
+    city:'Almaty'
 };
 
 

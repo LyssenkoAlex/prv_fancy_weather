@@ -1,0 +1,32 @@
+.info_card {
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16), 0 3px 5px rgba(0, 0, 0, 0.23);
+  margin: 5rem 0;
+  padding: 3rem 5rem;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.sunny {
+  background-image: linear-gradient(0deg, #b3e5fc, #29b6f6);
+}
+
+.weather {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.temperature {
+  font-size: 10em;
+}
+
+.weatherDetails {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  font-size: 3em;
+}
+
+.weatherForeCast {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
