@@ -1,13 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import MagnifyIcon from "mdi-react/MagnifyIcon";
+import {getUserLocationCoordinates} from "../constraints/fetchUrl";
+import {getLocation} from "../api/IPInfo";
 
 
 const Main = () => {
-    const language = useSelector(state => state.language);
-    const city = useSelector(state => state.city);
+
+    const inputRef = useRef()
+    const [city, setCity] = useState('Almaty');
+
+
     const handleSubmit = (e) => {
-        console.log('handleSubmit: ', e)
+        e.preventDefault();
+        // console.log('handleSubmit: ', this.locationInput.value)
+        setCity(e)
     }
 
     const handleChange = (e) => {
@@ -17,6 +24,17 @@ const Main = () => {
     const handleFocus = (e) => {
         console.log('handleFocus: ', e)
     }
+    useEffect(() => {
+
+
+        setTimeout(() => {
+            let location = getLocation();
+            console.log('locationB', inputRef.current.value)
+            console.log('locationC', location.city)
+        }, 600)
+
+
+    }, [city, inputRef]);
 
     return (
         <div className='wrapper'>
@@ -24,8 +42,20 @@ const Main = () => {
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div className='input_wrapper'>
                         <MagnifyIcon size={60}/>
-                        <input defaultValue={city} type='text' onFocus={(e) => handleFocus(e)}
-                               onChange={(e) => handleChange(e)}/>
+                        <input
+                            defaultValue={city}
+                            type='text'
+                            onFocus={(e) => handleFocus(e)}
+                            onChange={(e) => setCity(e.target.value)}
+                            ref={inputRef}
+                            required
+                        />
+                        <input type="text" name="city" list="cityname"/>
+                            <datalist id="cityname">
+                                <option value="Boston"/>
+                                    <option value="Cambridge"/>
+                            </datalist>
+
                     </div>
                 </form>
                 <div className='weather'>

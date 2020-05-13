@@ -88,4 +88,8 @@ ul li:not(:first-child) {
   text-align: center;
 }
 
+.mdi-icon {
+  color: aliceblue;
+}
+
 /*# sourceMappingURL=style.css.map */
