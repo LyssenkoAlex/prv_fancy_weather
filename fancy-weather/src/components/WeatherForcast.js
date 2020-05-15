@@ -12,7 +12,7 @@ const WeatherForecast = () => {
                 <div>today2</div>
                 <div>today3</div>
                 <div>today4</div>
-                <div>{location}</div>
+                <div>{location.name}</div>
             </div>
     )
 }

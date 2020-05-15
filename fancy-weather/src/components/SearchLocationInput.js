@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {changeLocation} from '../state/Actions';
 
 let autoComplete;
@@ -28,7 +28,7 @@ const SearchLocationInput = () => {
             autoCompleteRef.current,
             {types: ["(cities)"]}
         );
-        autoComplete.setFields(["address_components", "formatted_address"]);
+        autoComplete.setFields(["address_components", "formatted_address", "geometry", "name"]);
         autoComplete.addListener("place_changed", () =>
             handlePlaceSelect(updateQuery)
         );
@@ -44,22 +44,15 @@ const SearchLocationInput = () => {
         const addressObject = autoComplete.getPlace();
         const query = addressObject.formatted_address;
         updateQuery(query);
-        console.log('formatted_address', addressObject.formatted_address);
-        dispatch(changeLocation(addressObject.formatted_address))
+        console.log('formatted_address lng', addressObject.geometry.location.lat());
+        console.log('formatted_address lat', addressObject.geometry.location.lng());
+        dispatch(changeLocation({name:addressObject.name, lat:addressObject.geometry.location.lat(), lng:addressObject.geometry.location.lng()}))
     }
 
 
     const [query, setQuery] = useState("");
     const autoCompleteRef = useRef(null);
     const dispatch = useDispatch();
-    const location = useSelector(state => state.location);
-
-
-    const setLocation = (location) => {
-        console.log('location', location)
-        dispatch(changeLocation(location))
-    };
-
 
     useEffect(() => {
         loadScript(

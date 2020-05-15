@@ -4,7 +4,7 @@ const GOOGLE_PLACES = 'AIzaSyDLtbR-1ej--aUKizSNcgJJYIKz_KuSUNA';
 
 
 export const getWeatherByCoordinatesURL = (config) => {
-    return `https://api.openweathermap.org/data/2.5/forecast?lat=${config.lat}&lon=${config.lng}&lang=${config.language}&units=${config.unit}&APPID=${WEATHER_KEY}`;
+    return `https://api.openweathermap.org/data/2.5/onecall?lat=${config.lat}&lon=${config.lng}&lang=${config.language}&exclude=minutely,hourly&units=${config.unit}&APPID=${WEATHER_KEY}`;
 }
 
 export const getUserLocationCoordinates = () => {
@@ -17,4 +17,3 @@ export const getPlacesByFirstLetters = (config) => {
 }
 
 
-// https://maps.googleapis.com/maps/api/place/autocomplete/json?input=%D0%93%D0%BE%D0%BC%D0%B5&key=AIzaSyDLtbR-1ej--aUKizSNcgJJYIKz_KuSUNA&sessiontoken=1234567890
