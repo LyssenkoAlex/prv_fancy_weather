@@ -1,12 +1,12 @@
 import {
-    CHANGE_LANGUAGE
+    LOCATION
 } from "./Actions";
 
 
 
 const initialState = {
     language:'RU',
-    city:'Almaty'
+    location:''
 };
 
 
@@ -14,8 +14,8 @@ const initialState = {
 function directorsRootReducer(state = initialState, action) {
 
     switch (action.type) {
-        case CHANGE_LANGUAGE :
-            return Object.assign({}, state, {language:'EN'});
+        case LOCATION :
+            return Object.assign({}, state, {location:action.location});
         default:
             return state;
     }
