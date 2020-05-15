@@ -10,16 +10,21 @@
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-places-autocomplete": "^2.0.5",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "material-ui-search-bar": "^0.4.2",
+    "react-google-places-suggest": "^3.9.2",
+    "material-ui": "^0.20.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start-server": "nodemon server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,6 +44,8 @@
   "devDependencies": {
     "@material-ui/core": "^4.9.13",
     "@mdi/react": "^1.4.0",
-    "mdi-react": "^7.1.0"
+    "mdi-react": "^7.1.0",
+    "nodemon": "^2.0.4",
+    "react-load-script": "^0.0.6"
   }
 }
