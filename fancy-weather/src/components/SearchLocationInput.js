@@ -70,6 +70,9 @@ const SearchLocationInput = () => {
                     placeholder="Enter a City"
                     value={query}
                 />
+                <button>
+                    C/F
+                </button>
             </div>
         </form>
     );

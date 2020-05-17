@@ -2,13 +2,16 @@ import {
     LOCATION,
     WEATHER
 } from "./Actions";
+import {LANGUAGE, UNITS} from "../constraints/unitls";
 
 
 
 const initialState = {
-    language:'RU',
+    language:LANGUAGE.RU.VALUE,
     location:{},
-    weather:{}
+    weather:{},
+    unit:UNITS.METRIC.NAME,
+    selectedUnit:UNITS.METRIC.NAME
 };
 
 

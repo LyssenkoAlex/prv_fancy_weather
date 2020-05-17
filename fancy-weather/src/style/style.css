@@ -6,7 +6,7 @@ body {
   font-size: 62.5%;
 }
 
-input {
+input, button {
   align-items: flex-start;
   display: flex;
   background-color: transparent;
