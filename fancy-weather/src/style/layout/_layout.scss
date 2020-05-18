@@ -5,5 +5,8 @@
 }
 .input_wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 2fr 1fr;
+}
+.menu_wrapper {
+  display: flex;
 }

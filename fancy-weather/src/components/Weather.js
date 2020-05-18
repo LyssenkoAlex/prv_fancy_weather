@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {getWeather} from "../api/Weather";
 import {weatherForecast} from '../state/Actions';
+import {TRANS_WORDS} from "../constraints/unitls";
 
 
 const Weather = () => {
@@ -37,10 +38,10 @@ const Weather = () => {
             <div className='temperature'>{weather.temp}{unit.SIGN}</div>
             <div className='weatherDetails'>
                 <span>{weather.description}</span>
-                <span>{weather.feels_like}{unit.SIGN}</span>
+                <span>{TRANS_WORDS.FEELS_LIKE.RU}: {weather.feels_like}{unit.SIGN}</span>
                 <ul>
-                    <li>{weather.wind_speed}</li>
-                    <li>{weather.humidity}</li>
+                    <li>{TRANS_WORDS.SPEED.RU}: {weather.wind_speed}</li>
+                    <li>{TRANS_WORDS.HUMIDITY.RU}: {weather.humidity}</li>
                 </ul>
             </div>
         </div>

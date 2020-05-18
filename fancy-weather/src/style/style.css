@@ -13,7 +13,7 @@ input, button {
   border-left: none;
   border-right: none;
   color: #fff;
-  font-size: 4em;
+  font-size: 3em;
   width: 90%;
 }
 
@@ -37,7 +37,11 @@ ul li:not(:first-child) {
 
 .input_wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 2fr 1fr;
+}
+
+.menu_wrapper {
+  display: flex;
 }
 
 .App {
@@ -88,6 +92,10 @@ ul li:not(:first-child) {
 
 .mdi-icon {
   color: aliceblue;
+}
+
+.selected_unit {
+  color: brown;
 }
 
 /*# sourceMappingURL=style.css.map */

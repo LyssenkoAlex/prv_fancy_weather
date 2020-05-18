@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {changeLocation, changeUnits, recalculateTemp} from '../state/Actions';
-import {UNIT} from "../constraints/unitls";
+import {LANGUAGE, UNIT} from "../constraints/unitls";
 
 let autoComplete;
 const SearchLocationInput = () => {
@@ -53,15 +53,18 @@ const SearchLocationInput = () => {
         updateQuery(query);
         console.log('formatted_address lng', addressObject.geometry.location.lat());
         console.log('formatted_address lat', addressObject.geometry.location.lng());
-        dispatch(changeLocation({name:addressObject.name, lat:addressObject.geometry.location.lat(), lng:addressObject.geometry.location.lng()}))
+        dispatch(changeLocation({
+            name: addressObject.name,
+            lat: addressObject.geometry.location.lat(),
+            lng: addressObject.geometry.location.lng()
+        }))
     }
 
     const handleClick = () => {
         unit.NAME === UNIT.IMPERIAL.NAME ? dispatch(changeUnits(UNIT.METRIC)) : dispatch(changeUnits(UNIT.IMPERIAL));
-        dispatch(recalculateTemp(unit))
+        dispatch(recalculateTemp(unit));
+
     }
-
-
 
 
     useEffect(() => {
@@ -80,9 +83,21 @@ const SearchLocationInput = () => {
                     placeholder="Enter a City"
                     value={query}
                 />
-                <button onClick={() => handleClick()}>
-                    C°/F°
-                </button>
+                <div className='menu_wrapper'>
+                    <button onClick={() => handleClick()}>
+                        <span className={unit.NAME === UNIT.IMPERIAL.NAME ? '' : 'selected_unit'}>C°</span>
+                        - <span className={unit.NAME === UNIT.IMPERIAL.NAME ? 'selected_unit' : ''}>F°</span>
+                    </button>
+                    <button>
+                        <span>{LANGUAGE.RU.TITLE}</span>
+                    </button>
+                    <button>
+                        <span>{LANGUAGE.ENG.TITLE}</span>
+                    </button>
+                    <button>
+                        <span>{LANGUAGE.KAZ.TITLE}</span>
+                    </button>
+                </div>
             </div>
         </form>
     );

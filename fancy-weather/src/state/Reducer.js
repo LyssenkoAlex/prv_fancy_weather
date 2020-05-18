@@ -4,7 +4,7 @@ import {
     UNIT_CHANGE,
     RECALCULATE_TEMP
 } from "./Actions";
-import {LANGUAGE, toCelsius, toFahrenheit, UNIT} from "../constraints/unitls";
+import {LANGUAGE, temperatureConventor, toCelsius, toFahrenheit, UNIT} from "../constraints/unitls";
 
 
 
@@ -30,13 +30,9 @@ function directorsRootReducer(state = initialState, action) {
             return Object.assign({}, state, {unit:action.unit});
         case RECALCULATE_TEMP:
 
-            if(action.unit.NAME === UNIT.IMPERIAL.NAME) {
-                newTemp =  toCelsius(state.weather.temp);
-            }
-            else {
-                 newTemp =  toFahrenheit(state.weather.temp);
-            }
-            state.weather.temp = newTemp;
+
+            state.weather.temp = temperatureConventor(action.unit.NAME, state.weather.temp)
+            state.weather.feels_like = temperatureConventor(action.unit.NAME, state.weather.feels_like)
             return state;
 
         default:
