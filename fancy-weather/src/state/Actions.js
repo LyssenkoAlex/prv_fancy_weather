@@ -1,16 +1,22 @@
 export const LOCATION = 'LOCATION';
 export const WEATHER = 'WEATHER';
-export const UNIT_CHANGE = 'UNIT_CHANGE'
+export const UNIT_CHANGE = 'UNIT_CHANGE';
+export const RECALCULATE_TEMP = 'RECALCULATE_TEMP';
 
 
-export function changeLocation(location) {
+export const changeLocation = (location) => {
     return {type:LOCATION, location:location}
 }
 
-export function weatherForecast(weather) {
+export const weatherForecast = (weather) => {
     return {type:WEATHER, weather:weather}
 }
 
-export function changeUnits(unit) {
+export const changeUnits = (unit) => {
     return {type:UNIT_CHANGE, unit:unit}
 }
+
+export const recalculateTemp = (unit) => {
+    return {type:RECALCULATE_TEMP, unit:unit}
+}
+

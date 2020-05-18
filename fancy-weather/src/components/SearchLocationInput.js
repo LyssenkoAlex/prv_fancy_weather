@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {changeLocation, changeUnits} from '../state/Actions';
+import {changeLocation, changeUnits, recalculateTemp} from '../state/Actions';
 import {UNIT} from "../constraints/unitls";
 
 let autoComplete;
@@ -57,17 +57,8 @@ const SearchLocationInput = () => {
     }
 
     const handleClick = () => {
-
-        if(unit.NAME === UNIT.IMPERIAL.NAME) {
-            console.log('unitIMPERIAL: ', unit.NAME)
-            dispatch(changeUnits(UNIT.METRIC))
-        }
-        else {
-            console.log('unit 555: ', unit.NAME)
-            dispatch(changeUnits(UNIT.IMPERIAL))
-        }
-        // unit.NAME === UNIT.IMPERIAL.NAME ? dispatch(changeUnits(UNIT.METRIC)) : dispatch(changeUnits(UNIT.IMPERIAL));
-
+        unit.NAME === UNIT.IMPERIAL.NAME ? dispatch(changeUnits(UNIT.METRIC)) : dispatch(changeUnits(UNIT.IMPERIAL));
+        dispatch(recalculateTemp(unit))
     }
 
 
