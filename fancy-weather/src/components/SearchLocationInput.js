@@ -1,9 +1,16 @@
 import React, {useEffect, useRef, useState} from "react";
-import {useDispatch} from 'react-redux';
-import {changeLocation} from '../state/Actions';
+import {useDispatch, useSelector} from 'react-redux';
+import {changeLocation, changeUnits} from '../state/Actions';
+import {UNIT} from "../constraints/unitls";
 
 let autoComplete;
 const SearchLocationInput = () => {
+
+    const [query, setQuery] = useState("");
+    const autoCompleteRef = useRef(null);
+    const dispatch = useDispatch();
+    const unit = useSelector(state => state.unit);
+
     const loadScript = (url, callback) => {
         let script = document.createElement("script");
         script.type = "text/javascript";
@@ -49,10 +56,22 @@ const SearchLocationInput = () => {
         dispatch(changeLocation({name:addressObject.name, lat:addressObject.geometry.location.lat(), lng:addressObject.geometry.location.lng()}))
     }
 
+    const handleClick = () => {
 
-    const [query, setQuery] = useState("");
-    const autoCompleteRef = useRef(null);
-    const dispatch = useDispatch();
+        if(unit.NAME === UNIT.IMPERIAL.NAME) {
+            console.log('unitIMPERIAL: ', unit.NAME)
+            dispatch(changeUnits(UNIT.METRIC))
+        }
+        else {
+            console.log('unit 555: ', unit.NAME)
+            dispatch(changeUnits(UNIT.IMPERIAL))
+        }
+        // unit.NAME === UNIT.IMPERIAL.NAME ? dispatch(changeUnits(UNIT.METRIC)) : dispatch(changeUnits(UNIT.IMPERIAL));
+
+    }
+
+
+
 
     useEffect(() => {
         loadScript(
@@ -70,8 +89,8 @@ const SearchLocationInput = () => {
                     placeholder="Enter a City"
                     value={query}
                 />
-                <button>
-                    C/F
+                <button onClick={() => handleClick()}>
+                    C°/F°
                 </button>
             </div>
         </form>

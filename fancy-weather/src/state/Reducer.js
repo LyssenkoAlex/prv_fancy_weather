@@ -1,8 +1,9 @@
 import {
     LOCATION,
-    WEATHER
+    WEATHER,
+    UNIT_CHANGE
 } from "./Actions";
-import {LANGUAGE, UNITS} from "../constraints/unitls";
+import {LANGUAGE, UNIT} from "../constraints/unitls";
 
 
 
@@ -10,8 +11,7 @@ const initialState = {
     language:LANGUAGE.RU.VALUE,
     location:{},
     weather:{},
-    unit:UNITS.METRIC.NAME,
-    selectedUnit:UNITS.METRIC.NAME
+    unit:UNIT.METRIC,
 };
 
 
@@ -23,6 +23,9 @@ function directorsRootReducer(state = initialState, action) {
             return Object.assign({}, state, {location:action.location});
         case WEATHER:
             return Object.assign({}, state, {weather:action.weather});
+        case UNIT_CHANGE:
+            console.log('case unit')
+            return Object.assign({}, state, {unit:action.unit});
         default:
             return state;
     }

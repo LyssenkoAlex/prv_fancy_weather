@@ -4,6 +4,6 @@
   margin: 3em;
 }
 .input_wrapper {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
