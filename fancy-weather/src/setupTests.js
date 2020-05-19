@@ -1,6 +1,4 @@
-function f() {
-        return f;
-}
 
-var wildguess = new f() instanceof f;
-console.log(wildguess)
+
+let g = new Date(1589907600 * 1000);
+console.log(g)

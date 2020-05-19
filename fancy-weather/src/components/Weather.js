@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {getWeather} from "../api/Weather";
-import {weatherForecast} from '../state/Actions';
+import {weatherDaily, weatherForecast} from '../state/Actions';
 import {TRANS_WORDS} from "../constraints/unitls";
 
 
@@ -22,12 +22,20 @@ const Weather = () => {
                 unit:unit.NAME
             }).then((weather) => {
                 console.log('weather', weather.current)
+                console.log('weather fore', weather)
                 dispatch(weatherForecast({description:weather.current.weather[0].description
                     , temp:weather.current.temp
                     , feels_like:weather.current.feels_like
                     , wind_speed:weather.current.wind_speed
                     , humidity:weather.current.humidity
-                }))});
+                }))
+                let dailyWeather = [];
+                weather.daily.slice(1, 5).forEach((day) => {
+                    dailyWeather.push({date:new Date(day.dt * 1000), eve:day.temp.eve, main:day.weather[0].main})
+                })
+                console.log('dailyWeather', dailyWeather)
+                dispatch(weatherDaily(dailyWeather))
+            });
         }
 
     }, [location]);

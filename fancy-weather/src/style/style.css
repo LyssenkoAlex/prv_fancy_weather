@@ -98,7 +98,12 @@ ul li:not(:first-child) {
 }
 
 .selected_unit {
-  color: brown;
+  color: bisque;
+}
+
+.forecastDetails {
+  display: flex;
+  flex-flow: column;
 }
 
 /*# sourceMappingURL=style.css.map */

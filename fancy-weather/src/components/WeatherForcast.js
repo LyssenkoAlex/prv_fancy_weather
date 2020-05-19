@@ -1,18 +1,23 @@
 import React from "react";
-import { useDispatch, useSelector} from 'react-redux';
+import {  useSelector} from 'react-redux';
 
 
 
 const WeatherForecast = () => {
-    const location = useSelector(state => state.location);
-    return (
+    const weatherDaily = useSelector(state => state.weatherDaily);
+    const unit = useSelector(state => state.unit);
 
+    let weather = weatherDaily.map((day, i) => {
+        return <div key={i} className='forecastDetails'>
+            <span>{day.date.toLocaleDateString()}</span>
+            <span>{day.eve}{unit.SIGN}</span>
+            <span>{day.main}</span>
+        </div>;
+    })
+
+    return (
             <div className='weatherForeCast'>
-                <div>today101</div>
-                <div>today2</div>
-                <div>today3</div>
-                <div>today4</div>
-                <div>{location.name}</div>
+                {weather}
             </div>
     )
 }

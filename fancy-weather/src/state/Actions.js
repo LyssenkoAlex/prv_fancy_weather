@@ -2,7 +2,8 @@ export const LOCATION = 'LOCATION';
 export const WEATHER = 'WEATHER';
 export const UNIT_CHANGE = 'UNIT_CHANGE';
 export const RECALCULATE_TEMP = 'RECALCULATE_TEMP';
-export const LANGUAGE_CHANGE = 'LAANGUAGE_CHANGE';
+export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
+export const WEATHER_DAILY = 'WEATHER_DAILY';
 
 
 export const changeLocation = (location) => {
@@ -25,3 +26,6 @@ export const changeLanguage = (language) => {
     return {type:LANGUAGE_CHANGE, language:language}
 }
 
+export const weatherDaily = (weather) => {
+    return {type:WEATHER_DAILY, weatherDaily:weather}
+}
