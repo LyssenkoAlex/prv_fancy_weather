@@ -2,14 +2,14 @@ import {
     LOCATION,
     WEATHER,
     UNIT_CHANGE,
-    RECALCULATE_TEMP
+    RECALCULATE_TEMP, LANGUAGE_CHANGE
 } from "./Actions";
 import {LANGUAGE, temperatureConventor, toCelsius, toFahrenheit, UNIT} from "../constraints/unitls";
 
 
 
 const initialState = {
-    language:LANGUAGE.RU.VALUE,
+    language:LANGUAGE.RU,
     location:{},
     weather:{},
     unit:UNIT.METRIC,
@@ -26,15 +26,13 @@ function directorsRootReducer(state = initialState, action) {
         case WEATHER:
             return Object.assign({}, state, {weather:action.weather});
         case UNIT_CHANGE:
-            console.log('case unit')
             return Object.assign({}, state, {unit:action.unit});
         case RECALCULATE_TEMP:
-
-
             state.weather.temp = temperatureConventor(action.unit.NAME, state.weather.temp)
             state.weather.feels_like = temperatureConventor(action.unit.NAME, state.weather.feels_like)
             return state;
-
+        case LANGUAGE_CHANGE:
+            return Object.assign({}, state, {language:action.language});
         default:
             return state;
     }

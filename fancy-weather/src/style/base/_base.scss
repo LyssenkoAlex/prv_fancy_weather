@@ -17,6 +17,9 @@ input, button {
   color: #fff;
   font-size: 3em;
   width: 90%;
+  &:hover{
+    opacity: 0.5;
+  }
 }
 
 ul {

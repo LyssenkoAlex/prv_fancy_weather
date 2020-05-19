@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {changeLocation, changeUnits, recalculateTemp} from '../state/Actions';
+import {changeLanguage, changeLocation, changeUnits, recalculateTemp} from '../state/Actions';
 import {LANGUAGE, UNIT} from "../constraints/unitls";
 
 let autoComplete;
@@ -10,6 +10,7 @@ const SearchLocationInput = () => {
     const autoCompleteRef = useRef(null);
     const dispatch = useDispatch();
     const unit = useSelector(state => state.unit);
+    const language = useSelector(state => state.language);
 
     const loadScript = (url, callback) => {
         let script = document.createElement("script");
@@ -66,6 +67,10 @@ const SearchLocationInput = () => {
 
     }
 
+    const handleLanguageButton = (e) => {
+        dispatch(changeLanguage(e))
+    }
+
 
     useEffect(() => {
         loadScript(
@@ -88,14 +93,14 @@ const SearchLocationInput = () => {
                         <span className={unit.NAME === UNIT.IMPERIAL.NAME ? '' : 'selected_unit'}>C°</span>
                         - <span className={unit.NAME === UNIT.IMPERIAL.NAME ? 'selected_unit' : ''}>F°</span>
                     </button>
-                    <button>
-                        <span>{LANGUAGE.RU.TITLE}</span>
+                    <button onClick={() => handleLanguageButton(LANGUAGE.RU)}>
+                        <span className={language.TITLE === LANGUAGE.RU.TITLE ? 'selected_unit' : ''}>{LANGUAGE.RU.TITLE}</span>
                     </button>
-                    <button>
-                        <span>{LANGUAGE.ENG.TITLE}</span>
+                    <button onClick={() => handleLanguageButton(LANGUAGE.ENG)}>
+                        <span className={language.TITLE === LANGUAGE.ENG.TITLE ? 'selected_unit' : ''}>{LANGUAGE.ENG.TITLE}</span>
                     </button>
-                    <button>
-                        <span>{LANGUAGE.KAZ.TITLE}</span>
+                    <button onClick={() => handleLanguageButton(LANGUAGE.KAZ)}>
+                        <span className={language.TITLE === LANGUAGE.KAZ.TITLE ? 'selected_unit' : ''}>{LANGUAGE.KAZ.TITLE}</span>
                     </button>
                 </div>
             </div>

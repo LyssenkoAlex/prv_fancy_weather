@@ -9,6 +9,7 @@ const Weather = () => {
     const location = useSelector(state => state.location);
     const weather = useSelector(state => state.weather);
     const unit = useSelector(state => state.unit);
+    const language = useSelector(state => state.language);
 
     const dispatch = useDispatch();
 
@@ -38,10 +39,10 @@ const Weather = () => {
             <div className='temperature'>{weather.temp}{unit.SIGN}</div>
             <div className='weatherDetails'>
                 <span>{weather.description}</span>
-                <span>{TRANS_WORDS.FEELS_LIKE.RU}: {weather.feels_like}{unit.SIGN}</span>
+                <span>{TRANS_WORDS.FEELS_LIKE[language.TITLE]}: {weather.feels_like}{unit.SIGN}</span>
                 <ul>
-                    <li>{TRANS_WORDS.SPEED.RU}: {weather.wind_speed}</li>
-                    <li>{TRANS_WORDS.HUMIDITY.RU}: {weather.humidity}</li>
+                    <li>{TRANS_WORDS.SPEED[language.TITLE]}: {weather.wind_speed}</li>
+                    <li>{TRANS_WORDS.HUMIDITY[language.TITLE]}: {weather.humidity}</li>
                 </ul>
             </div>
         </div>

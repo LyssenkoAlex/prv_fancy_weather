@@ -16,6 +16,9 @@ input, button {
   font-size: 3em;
   width: 90%;
 }
+input:hover, button:hover {
+  opacity: 0.5;
+}
 
 ul {
   margin: 0;
