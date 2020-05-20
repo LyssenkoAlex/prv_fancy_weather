@@ -3,6 +3,8 @@ const IP_INFO = '202bfb8af6b203';
 const GOOGLE_PLACES = 'AIzaSyDLtbR-1ej--aUKizSNcgJJYIKz_KuSUNA';
 const YANDEX_KEY = 'trnsl.1.1.20191209T024748Z.9eb2df4f5e1d2e9a.df86f4d226cbc1e6580f38404715890d2888a94a';
 const UNSPLASH_KEY = '71d2ca753c7333a8e0b3d60ed1b8bdeb9ab30030606c6eae04bb6836ead2abe9';
+export const MAP_BOX_KEY = 'pk.eyJ1IjoibHlzc2Vua29hbGV4IiwiYSI6ImNrM2ZxcWF3MDAwYjgzY3NlNndmb3p2c2EifQ.Aaf7-bWQOS3CcOgLVRs9gA';
+
 
 
 

@@ -55,7 +55,6 @@ const SearchLocationInput = () => {
         const addressObject = autoComplete.getPlace();
         const query = addressObject.formatted_address;
         updateQuery(query);
-        console.log('addressObject', addressObject);
         dispatch(changeLocation({
             name: addressObject.name,
             lat: addressObject.geometry.location.lat(),
@@ -71,7 +70,6 @@ const SearchLocationInput = () => {
 
     const handleLanguageButton = async (e) => {
         let h = await getTranslation({text:weather.description, from_lang:language.VALUE, to_lang:e.VALUE});
-        console.log('h: ', h)
         weather.description = h.text[0];
         dispatch(changeLanguage(e));
         dispatch(weatherForecast(weather))
