@@ -1,9 +1,14 @@
+html {
+  font-size: calc(1em + 1vw);
+}
+
 body {
-  margin: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 62.5%;
 }
 
 input, button {
@@ -13,8 +18,8 @@ input, button {
   border-left: none;
   border-right: none;
   color: #fff;
-  font-size: 3em;
   width: 90%;
+  font-size: 1em;
 }
 input:hover, button:hover {
   opacity: 0.5;
@@ -35,32 +40,24 @@ ul li:not(:first-child) {
 .wrapper {
   display: grid;
   grid-gap: 5px;
-  margin: 3em;
+  margin: 1em;
 }
 
 .input_wrapper {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 5fr 3fr;
 }
 
 .menu_wrapper {
   display: flex;
 }
 
-.App {
-  height: 100vh;
-  transition: all 0.3s ease-in-out;
-  width: 100vw;
-  background: antiquewhite;
-}
-
 .info_card {
   border-radius: 0.5rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16), 0 3px 5px rgba(0, 0, 0, 0.23);
-  margin: 5rem 0 0.5rem;
-  padding: 3rem 3rem 0.5rem;
+  margin: 2rem 0 0.5rem;
+  padding: 2rem 2rem 0.5rem;
   text-align: center;
-  font-size: 1.5em;
 }
 
 .sunny {
@@ -73,14 +70,13 @@ ul li:not(:first-child) {
 }
 
 .temperature {
-  font-size: 10em;
+  font-size: 4em;
 }
 
 .weatherDetails {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  font-size: 3em;
 }
 
 .weatherForeCast {

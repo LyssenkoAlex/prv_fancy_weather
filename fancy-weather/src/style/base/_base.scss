@@ -1,11 +1,17 @@
+html {
+  font-size: calc(1em + 1vw);
+}
+
 body {
-  margin: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 62.5%;
+
 }
 
 input, button {
@@ -15,8 +21,8 @@ input, button {
   border-left: none;
   border-right: none;
   color: #fff;
-  font-size: 3em;
   width: 90%;
+  font-size: 1em;
   &:hover{
     opacity: 0.5;
   }

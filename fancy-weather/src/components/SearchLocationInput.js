@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {changeLanguage, changeLocation, changeUnits, recalculateTemp} from '../state/Actions';
 import {LANGUAGE, UNIT} from "../constraints/unitls";
+import {getYandexTranslateURL} from "../constraints/fetchUrl";
 
 let autoComplete;
 const SearchLocationInput = () => {
@@ -67,7 +68,9 @@ const SearchLocationInput = () => {
 
     }
 
-    const handleLanguageButton = (e) => {
+    const handleLanguageButton = async (e) => {
+        let h = await getYandexTranslateURL({text:'ощущается как', from_lang:'ru', to_lang:'kk'});
+        console.log('h: ', h)
         dispatch(changeLanguage(e))
     }
 

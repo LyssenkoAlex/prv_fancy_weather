@@ -1,10 +1,9 @@
 .info_card {
   border-radius: 0.5rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16), 0 3px 5px rgba(0, 0, 0, 0.23);
-  margin: 5rem 0 0.5rem;
-  padding: 3rem 3rem 0.5rem;
+  margin: 2rem 0 0.5rem;
+  padding: 2rem 2rem 0.5rem;
   text-align: center;
-  font-size: 1.5em;
 }
 
 .sunny {
@@ -16,14 +15,13 @@
   grid-template-columns: 1fr 1fr;
 }
 .temperature {
-  font-size: 10em;
+  font-size: 4em;
 }
 
 .weatherDetails {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  font-size: 3em;
 }
 
 .weatherForeCast {

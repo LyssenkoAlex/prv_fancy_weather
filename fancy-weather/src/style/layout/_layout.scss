@@ -1,11 +1,11 @@
 .wrapper {
   display: grid;
   grid-gap: 5px;
-  margin: 3em;
+  margin: 1em;
 }
 .input_wrapper {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 5fr 3fr;
 }
 .menu_wrapper {
   display: flex;

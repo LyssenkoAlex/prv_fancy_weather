@@ -21,19 +21,16 @@ const Weather = () => {
                 language: 'RU',
                 unit:unit.NAME
             }).then((weather) => {
-                console.log('weather', weather.current)
-                console.log('weather fore', weather)
                 dispatch(weatherForecast({description:weather.current.weather[0].description
-                    , temp:weather.current.temp
-                    , feels_like:weather.current.feels_like
+                    , temp:Math.round(weather.current.temp)
+                    , feels_like:Math.round(weather.current.feels_like)
                     , wind_speed:weather.current.wind_speed
                     , humidity:weather.current.humidity
                 }))
                 let dailyWeather = [];
                 weather.daily.slice(1, 5).forEach((day) => {
-                    dailyWeather.push({date:new Date(day.dt * 1000), eve:day.temp.eve, main:day.weather[0].main})
+                    dailyWeather.push({date:new Date(day.dt * 1000), eve:Math.round(day.temp.eve), main:day.weather[0].main})
                 })
-                console.log('dailyWeather', dailyWeather)
                 dispatch(weatherDaily(dailyWeather))
             });
         }
