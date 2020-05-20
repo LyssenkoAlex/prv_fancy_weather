@@ -21,11 +21,15 @@ const Weather = () => {
                 language: 'RU',
                 unit:unit.NAME
             }).then((weather) => {
+                console.log('weather.current', weather)
                 dispatch(weatherForecast({description:weather.current.weather[0].description
                     , temp:Math.round(weather.current.temp)
                     , feels_like:Math.round(weather.current.feels_like)
                     , wind_speed:weather.current.wind_speed
                     , humidity:weather.current.humidity
+                    , main:weather.current.weather[0].main
+                    , timezone:weather.timezone
+                    , timezone_offset:weather.timezone_offset
                 }))
                 let dailyWeather = [];
                 weather.daily.slice(1, 5).forEach((day) => {

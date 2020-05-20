@@ -10,7 +10,7 @@ import {LANGUAGE, temperatureConventor, UNIT} from "../constraints/unitls";
 
 const initialState = {
     language:LANGUAGE.RU,
-    location:{},
+    location: {},
     weather:{},
     unit:UNIT.METRIC,
     weatherDaily:[]

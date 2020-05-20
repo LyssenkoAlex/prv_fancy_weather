@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {changeLanguage, changeLocation, changeUnits, recalculateTemp} from '../state/Actions';
+import {changeLanguage, changeLocation, changeUnits, recalculateTemp, weatherForecast} from '../state/Actions';
 import {LANGUAGE, UNIT} from "../constraints/unitls";
-import {getYandexTranslateURL} from "../constraints/fetchUrl";
+import {getTranslation} from "../api/Translation";
 
 let autoComplete;
 const SearchLocationInput = () => {
@@ -12,6 +12,8 @@ const SearchLocationInput = () => {
     const dispatch = useDispatch();
     const unit = useSelector(state => state.unit);
     const language = useSelector(state => state.language);
+    const weather = useSelector(state => state.weather);
+    const location = useSelector(state => state.location);
 
     const loadScript = (url, callback) => {
         let script = document.createElement("script");
@@ -53,8 +55,7 @@ const SearchLocationInput = () => {
         const addressObject = autoComplete.getPlace();
         const query = addressObject.formatted_address;
         updateQuery(query);
-        console.log('formatted_address lng', addressObject.geometry.location.lat());
-        console.log('formatted_address lat', addressObject.geometry.location.lng());
+        console.log('addressObject', addressObject);
         dispatch(changeLocation({
             name: addressObject.name,
             lat: addressObject.geometry.location.lat(),
@@ -69,9 +70,12 @@ const SearchLocationInput = () => {
     }
 
     const handleLanguageButton = async (e) => {
-        let h = await getYandexTranslateURL({text:'ощущается как', from_lang:'ru', to_lang:'kk'});
+        let h = await getTranslation({text:weather.description, from_lang:language.VALUE, to_lang:e.VALUE});
         console.log('h: ', h)
-        dispatch(changeLanguage(e))
+        weather.description = h.text[0];
+        dispatch(changeLanguage(e));
+        dispatch(weatherForecast(weather))
+
     }
 
 
@@ -88,7 +92,7 @@ const SearchLocationInput = () => {
                 <input
                     ref={autoCompleteRef}
                     onChange={event => setQuery(event.target.value)}
-                    placeholder="Enter a City"
+                    placeholder={location.name}
                     value={query}
                 />
                 <div className='menu_wrapper'>

@@ -2,6 +2,8 @@ const WEATHER_KEY = 'a495f9095a5e73c90ffd69a52f0d4bc0';
 const IP_INFO = '202bfb8af6b203';
 const GOOGLE_PLACES = 'AIzaSyDLtbR-1ej--aUKizSNcgJJYIKz_KuSUNA';
 const YANDEX_KEY = 'trnsl.1.1.20191209T024748Z.9eb2df4f5e1d2e9a.df86f4d226cbc1e6580f38404715890d2888a94a';
+const UNSPLASH_KEY = '71d2ca753c7333a8e0b3d60ed1b8bdeb9ab30030606c6eae04bb6836ead2abe9';
+
 
 
 
@@ -22,3 +24,6 @@ export const getYandexTranslateURL= (config) => {
     return `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${YANDEX_KEY}&text=${config.text}&lang=${config.from_lang}-${config.to_lang}&format=plain`;
 }
 
+export const getImageByCityURL = (config) => {
+    return `https://api.unsplash.com/photos/random?query=town,${config.weather},${config.season},${config.dayPeriod},${config.city}&client_id=${UNSPLASH_KEY}`;
+}

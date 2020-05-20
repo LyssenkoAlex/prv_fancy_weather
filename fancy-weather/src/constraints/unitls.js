@@ -31,3 +31,24 @@ export const temperatureConventor = (unitName, temp) => {
     }
     return toReturn;
 }
+
+export const getSeason = () => {
+    const today = new Date();
+    const seasonItem = Math.floor((today.getMonth() / 12 * 4)) % 4;
+    return ['Summer', 'Autumn', 'Winter', 'Spring'][seasonItem];
+};
+
+export const getDayDayPeriod = (timeZone) => {
+    const today = new Date();
+    const uts = new Date();
+    if (timeZone !== 0) {
+        uts.setHours(today.getHours() + today.getTimezoneOffset() / 60 + (timeZone / 60 / 60));
+    }
+    return uts.getHours() < 12 ? 'morning' : uts.getHours() < 18 ? 'afternoon' : 'evening';
+};
+
+export const getUTCTime = () => {
+    const now = new Date();
+    return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+        now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+};
