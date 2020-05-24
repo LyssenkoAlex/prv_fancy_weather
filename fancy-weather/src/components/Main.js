@@ -49,7 +49,6 @@ const Main = () => {
             </div>
             <div className='map'>
                 <Map/>
-                {/*<span>map</span>*/}
             </div>
         </div>
     );

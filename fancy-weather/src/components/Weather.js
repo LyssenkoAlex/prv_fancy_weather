@@ -21,6 +21,7 @@ const Weather = () => {
                 language: 'RU',
                 unit:unit.NAME
             }).then((weather) => {
+                console.log('weather: ', weather)
                 dispatch(weatherForecast({description:weather.current.weather[0].description
                     , temp:Math.round(weather.current.temp)
                     , feels_like:Math.round(weather.current.feels_like)
@@ -29,10 +30,11 @@ const Weather = () => {
                     , main:weather.current.weather[0].main
                     , timezone:weather.timezone
                     , timezone_offset:weather.timezone_offset
+                    , icon:weather.current.weather[0].icon
                 }))
                 let dailyWeather = [];
                 weather.daily.slice(1, 5).forEach((day) => {
-                    dailyWeather.push({date:new Date(day.dt * 1000), eve:Math.round(day.temp.eve), main:day.weather[0].main})
+                    dailyWeather.push({date:new Date(day.dt * 1000), eve:Math.round(day.temp.eve), main:day.weather[0].main, icon:day.weather[0].icon})
                 })
                 dispatch(weatherDaily(dailyWeather))
             });
