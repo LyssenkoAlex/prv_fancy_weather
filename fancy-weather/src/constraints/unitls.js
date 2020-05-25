@@ -1,3 +1,12 @@
+import ClearIcon from '../assets/weather_icons/01d.png';
+import CloudsIcon from '../assets/weather_icons/02d.png';
+import DrizzleIcon from '../assets/weather_icons/09d.png';
+import RainleIcon from '../assets/weather_icons/10d.png';
+import ThunderstormIcon from '../assets/weather_icons/11n.png';
+import SnowIcon from '../assets/weather_icons/13d.png';
+import SmokeIcon from '../assets/weather_icons/50d.png';
+import FogIcon from '../assets/weather_icons/50d.png';
+
 export const UNIT = { IMPERIAL: { TYPE: 'imperial', SIGN: '°F', NAME: 'IMPERIAL' }, METRIC: { TYPE: 'metric', SIGN: '°C', NAME: 'METRIC' } };
 export const LANGUAGE = { RU: { TITLE: 'RU', VALUE: 'ru' }, ENG: { TITLE: 'ENG', VALUE: 'en' }, KAZ: { TITLE: 'KAZ', VALUE: 'kk' } };
 
@@ -52,3 +61,32 @@ export const getUTCTime = () => {
     return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
         now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 };
+
+export const WEATHER_CONDITIONS = {
+    Clear: {
+        MAIN: 'Clear', IMG: '01d.png', Description: 'Clear', ICON: ClearIcon
+    },
+    Clouds: {
+        MAIN: 'Clouds', IMG: '02d.png', Description: 'Clouds', ICON: CloudsIcon
+    },
+    Drizzle: {
+        MAIN: 'Drizzle', IMG: '09d.png', Description: 'drizzle', ICON: DrizzleIcon
+    },
+    Rain: {
+        MAIN: 'Rain', IMG: '10d.png', Description: 'Rain', ICON: RainleIcon
+    },
+    Thunderstorm: {
+        MAIN: 'Thunderstorm', IMG: '11n.png', Description: 'Description', ICON: ThunderstormIcon
+    },
+    Snow: {
+        MAIN: 'Snow', IMG: '13d.png', Description: 'Snow', ICON: SnowIcon
+    },
+    Smoke: {
+        MAIN: 'Smoke', IMG: '50d.png', Description: 'Smoke', ICON: SmokeIcon
+    },
+    Fog: {
+        MAIN: 'Fog', IMG: '50d.png', Description: 'Fog', ICON: FogIcon
+    }
+
+};
+

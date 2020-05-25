@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {getWeather} from "../api/Weather";
 import {weatherDaily, weatherForecast} from '../state/Actions';
-import {TRANS_WORDS} from "../constraints/unitls";
+import {TRANS_WORDS, WEATHER_CONDITIONS} from "../constraints/unitls";
 
 
 const Weather = () => {
@@ -49,6 +49,9 @@ const Weather = () => {
             <div className='temperature'>{weather.temp}{unit.SIGN}</div>
             <div className='weatherDetails'>
                 <span>{weather.description}</span>
+                <div className='img_wrapper'>
+                <img src={WEATHER_CONDITIONS[weather.main] ===  undefined ? '#' : WEATHER_CONDITIONS[weather.main].ICON} alt={weather.main} className='imgContainer'/>
+                </div>
                 <span>{TRANS_WORDS.FEELS_LIKE[language.TITLE]}: {weather.feels_like}{unit.SIGN}</span>
                 <ul>
                     <li>{TRANS_WORDS.SPEED[language.TITLE]}: {weather.wind_speed}</li>

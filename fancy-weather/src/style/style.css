@@ -95,6 +95,11 @@ ul li:not(:first-child) {
   color: aliceblue;
 }
 
+.imgContainer {
+  width: 5em;
+  height: auto;
+}
+
 .selected_unit {
   color: bisque;
 }
