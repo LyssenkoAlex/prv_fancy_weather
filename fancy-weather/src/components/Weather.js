@@ -46,7 +46,9 @@ const Weather = () => {
 
     return (
         <div className='weather'>
-            <div className='temperature'>{weather.temp}{unit.SIGN}</div>
+            <div className='temperature'>
+                {weather.temp}{unit.SIGN}
+            </div>
             <div className='weatherDetails'>
                 <span>{weather.description}</span>
                 <div className='img_wrapper'>
@@ -54,12 +56,11 @@ const Weather = () => {
                 </div>
                 <span>{TRANS_WORDS.FEELS_LIKE[language.TITLE]}: {weather.feels_like}{unit.SIGN}</span>
                 <ul>
-                    <li>{TRANS_WORDS.SPEED[language.TITLE]}: {weather.wind_speed}</li>
-                    <li>{TRANS_WORDS.HUMIDITY[language.TITLE]}: {weather.humidity}</li>
+                    <li>{TRANS_WORDS.SPEED[language.TITLE]}: {weather.wind_speed}{TRANS_WORDS.M_S[language.TITLE]}</li>
+                    <li>{TRANS_WORDS.HUMIDITY[language.TITLE]}: {weather.humidity}%</li>
                 </ul>
             </div>
         </div>
-
     )
 }
 

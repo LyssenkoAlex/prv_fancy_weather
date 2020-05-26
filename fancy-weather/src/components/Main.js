@@ -9,7 +9,6 @@ import {getImages} from "../api/Images";
 import {getDayDayPeriod, getSeason} from "../constraints/unitls";
 import Map from "./Map";
 
-
 const Main = () => {
     const location = useSelector(state => state.location);
     const dispatch = useDispatch();
@@ -32,6 +31,7 @@ const Main = () => {
                 season: getSeason(),
                 dayPeriod: getDayDayPeriod(weather.timezone_offset)
             });
+            console.log('image.urls.regular: ', image.urls.regular)
             updateBackgroundImage(image.urls.regular)
         }
         updateLocationImage();

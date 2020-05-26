@@ -57,31 +57,46 @@ ul li:not(:first-child) {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16), 0 3px 5px rgba(0, 0, 0, 0.23);
   padding: 2rem 2rem 0.5rem;
   text-align: center;
-  opacity: 0.7;
+  opacity: 1;
+  z-index: 100;
 }
 
 .sunny {
   background-image: linear-gradient(0deg, #b3e5fc, #29b6f6);
+  opacity: 1;
 }
 
 .weather {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background-color: aliceblue;
+  opacity: 0.8;
+  border-radius: 2%;
 }
 
 .temperature {
   font-size: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .weatherDetails {
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
+  background-color: cadetblue;
+  border-radius: 2%;
 }
 
 .weatherForeCast {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  background-color: aliceblue;
+  opacity: 0.8;
+  border-radius: 2%;
+  grid-gap: 5px;
+  margin: 5px;
 }
 
 .map {
@@ -100,6 +115,12 @@ ul li:not(:first-child) {
   height: auto;
 }
 
+.temperature_container {
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+}
+
 .selected_unit {
   color: bisque;
 }
@@ -107,6 +128,9 @@ ul li:not(:first-child) {
 .forecastDetails {
   display: flex;
   flex-flow: column;
+  align-items: center;
+  background-color: darkslategrey;
+  border-radius: 2%;
 }
 
 /*# sourceMappingURL=style.css.map */

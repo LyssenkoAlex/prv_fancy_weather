@@ -19,7 +19,8 @@ export const TRANS_WORDS = {
     ENTER: { RU: 'введите город', ENG: 'enter city', KAZ: 'qalaǵa kirińiz' },
     LATITUDE: { RU: 'широта', ENG: 'Latitude:', KAZ: 'endik' },
     LONGITUDE: { ENG: 'longitude', RU: 'долгота', KAZ: 'boılyq' },
-    FEELS_LIKE: { ENG: 'feels like', RU: 'ощущается как', KAZ: 'Sïyaqtı'}
+    FEELS_LIKE: { ENG: 'feels like', RU: 'ощущается как', KAZ: 'Sïyaqtı'},
+    M_S:{ENG: 'm/s', RU: 'м/с', KAZ: 'm/e'}
 };
 
 export const toCelsius = (fahrenheit) => {
