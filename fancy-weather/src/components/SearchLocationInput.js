@@ -4,6 +4,7 @@ import {changeLanguage, changeLocation, changeUnits, recalculateTemp, weatherFor
 import {LANGUAGE, UNIT} from "../constraints/unitls";
 import {getTranslation} from "../api/Translation";
 import Time from "./Time";
+import Speech from "./Speech";
 
 let autoComplete;
 const SearchLocationInput = () => {
@@ -67,7 +68,6 @@ const SearchLocationInput = () => {
     const handleClick = () => {
         unit.NAME === UNIT.IMPERIAL.NAME ? dispatch(changeUnits(UNIT.METRIC)) : dispatch(changeUnits(UNIT.IMPERIAL));
         dispatch(recalculateTemp(unit));
-
     }
 
     const handleLanguageButton = async (e) => {
@@ -75,7 +75,6 @@ const SearchLocationInput = () => {
         weather.description = h.text[0];
         dispatch(changeLanguage(e));
         dispatch(weatherForecast(weather))
-
     }
 
 
@@ -94,6 +93,7 @@ const SearchLocationInput = () => {
                     onChange={event => setQuery(event.target.value)}
                     placeholder={location.name}
                     value={query}
+                    id='idInputLocation'
                 />
                 <div className='menu_wrapper'>
                     <div className='timeContainer'>
@@ -112,6 +112,9 @@ const SearchLocationInput = () => {
                     <button onClick={() => handleLanguageButton(LANGUAGE.KAZ)}>
                         <span className={language.TITLE === LANGUAGE.KAZ.TITLE ? 'selected_unit' : ''}>{LANGUAGE.KAZ.TITLE}</span>
                     </button>
+                    <div className='timeContainer'>
+                        <Speech/>
+                    </div>
                 </div>
             </div>
         </form>
