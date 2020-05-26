@@ -26,8 +26,6 @@ export const changeLanguage = (language) => {
     return {type:LANGUAGE_CHANGE, language:language}
 }
 
-
-
 export const weatherDaily = (weather) => {
     return {type:WEATHER_DAILY, weatherDaily:weather}
 }

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {changeLanguage, changeLocation, changeUnits, recalculateTemp, weatherForecast} from '../state/Actions';
 import {LANGUAGE, UNIT} from "../constraints/unitls";
 import {getTranslation} from "../api/Translation";
+import Time from "./Time";
 
 let autoComplete;
 const SearchLocationInput = () => {
@@ -14,6 +15,7 @@ const SearchLocationInput = () => {
     const language = useSelector(state => state.language);
     const weather = useSelector(state => state.weather);
     const location = useSelector(state => state.location);
+
 
     const loadScript = (url, callback) => {
         let script = document.createElement("script");
@@ -94,6 +96,9 @@ const SearchLocationInput = () => {
                     value={query}
                 />
                 <div className='menu_wrapper'>
+                    <div className='timeContainer'>
+                        <Time/>
+                    </div>
                     <button onClick={() => handleClick()}>
                         <span className={unit.NAME === UNIT.IMPERIAL.NAME ? '' : 'selected_unit'}>C°</span>
                         - <span className={unit.NAME === UNIT.IMPERIAL.NAME ? 'selected_unit' : ''}>F°</span>

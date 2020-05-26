@@ -11,17 +11,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input, button {
+input, button, .timeContainer {
   background-color: transparent;
   border-bottom: 1px dotted #fff;
   border-top: none;
   border-left: none;
   border-right: none;
   color: #fff;
-  width: 90%;
-  font-size: 1em;
+  margin: 0.5em;
+  font-size: 0.8em;
 }
-input:hover, button:hover {
+input:hover, button:hover, .timeContainer:hover {
   opacity: 0.5;
 }
 
@@ -45,7 +45,7 @@ ul li:not(:first-child) {
 
 .input_wrapper {
   display: grid;
-  grid-template-columns: 5fr 3fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .menu_wrapper {

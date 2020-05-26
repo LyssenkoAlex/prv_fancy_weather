@@ -14,15 +14,15 @@ body {
 
 }
 
-input, button {
+input, button, .timeContainer {
   background-color: transparent;
   border-bottom: 1px dotted #fff;
   border-top: none;
   border-left: none;
   border-right: none;
   color: #fff;
-  width: 90%;
-  font-size: 1em;
+  margin: 0.5em;
+  font-size: 0.8em;
   &:hover{
     opacity: 0.5;
   }
