@@ -17,7 +17,6 @@ const Weather = () => {
     const weather = useSelector(state => state.weather);
     const unit = useSelector(state => state.unit);
     const language = useSelector(state => state.language);
-    const imagesState = useSelector(state => state.photoUrl);
 
     const dispatch = useDispatch();
 
@@ -57,10 +56,8 @@ const Weather = () => {
                     dayPeriod: getDayDayPeriod(weather.timezone_offset)
                 }).then((imagesArray) => {
                     dispatch(photoUrls(imagesArray));
-                    console.log('imagesState: ', imagesState)
-                    console.log('imagesArray: ', imagesArray)
-                    if(imagesState.length > 0) {
-                        updateBackgroundImage(imagesState[Math.floor(Math.random() * Math.floor(imagesState.length))].url_h)
+                    if(imagesArray.length > 0) {
+                        updateBackgroundImage(imagesArray[Math.floor(Math.random() * Math.floor(imagesArray.length))].url_h)
                     }
                 })
 

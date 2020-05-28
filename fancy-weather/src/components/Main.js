@@ -23,7 +23,8 @@ const Main = () => {
             }
         }
             updateLocation();
-    }, []);
+    }, [dispatch, locationState.lat]
+    );
 
 
     return (
