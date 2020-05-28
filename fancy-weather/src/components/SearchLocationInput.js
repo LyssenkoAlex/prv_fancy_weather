@@ -1,10 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import {changeLanguage, changeLocation, changeUnits, recalculateTemp, weatherForecast} from '../state/Actions';
-import {LANGUAGE, UNIT, updateBackgroundImage} from "../constraints/unitls";
-import {getTranslation} from "../api/Translation";
-import Time from "./Time";
-import Speech from "./Speech";
+import {changeLocation} from '../state/Actions';
+import WeatherMenu from "./WeatherMenu";
 
 let autoComplete;
 const SearchLocationInput = () => {
@@ -12,11 +9,7 @@ const SearchLocationInput = () => {
     const [query, setQuery] = useState("");
     const autoCompleteRef = useRef(null);
     const dispatch = useDispatch();
-    const unit = useSelector(state => state.unit);
-    const language = useSelector(state => state.language);
-    const weather = useSelector(state => state.weather);
     const location = useSelector(state => state.location);
-    const images = useSelector(state => state.photoUrl);
 
 
     const loadScript = (url, callback) => {
@@ -66,23 +59,6 @@ const SearchLocationInput = () => {
         }))
     }
 
-    const handleClick = () => {
-        unit.NAME === UNIT.IMPERIAL.NAME ? dispatch(changeUnits(UNIT.METRIC)) : dispatch(changeUnits(UNIT.IMPERIAL));
-        dispatch(recalculateTemp(unit));
-    }
-
-    const handleLanguageButton = async (e) => {
-        let h = await getTranslation({text:weather.description, from_lang:language.VALUE, to_lang:e.VALUE});
-        weather.description = h.text[0];
-        dispatch(changeLanguage(e));
-        dispatch(weatherForecast(weather))
-    }
-
-    const handleImageButton = async(e) => {
-         updateBackgroundImage(images[Math.floor(Math.random() * Math.floor(images.length))].url_h)
-    }
-
-
     useEffect(() => {
         loadScript(
             `https://maps.googleapis.com/maps/api/js?key=AIzaSyDLtbR-1ej--aUKizSNcgJJYIKz_KuSUNA&libraries=places`,
@@ -100,30 +76,7 @@ const SearchLocationInput = () => {
                     value={query}
                     id='idInputLocation'
                 />
-                <div className='menu_wrapper'>
-                    <div className='timeContainer'>
-                        <Time/>
-                    </div>
-                    <button onClick={() => handleClick()}>
-                        <span className={unit.NAME === UNIT.IMPERIAL.NAME ? '' : 'selected_unit'}>C°</span>
-                        - <span className={unit.NAME === UNIT.IMPERIAL.NAME ? 'selected_unit' : ''}>F°</span>
-                    </button>
-                    <button onClick={() => handleLanguageButton(LANGUAGE.RU)}>
-                        <span className={language.TITLE === LANGUAGE.RU.TITLE ? 'selected_unit' : ''}>{LANGUAGE.RU.TITLE}</span>
-                    </button>
-                    <button onClick={() => handleLanguageButton(LANGUAGE.ENG)}>
-                        <span className={language.TITLE === LANGUAGE.ENG.TITLE ? 'selected_unit' : ''}>{LANGUAGE.ENG.TITLE}</span>
-                    </button>
-                    <button onClick={() => handleLanguageButton(LANGUAGE.KAZ)}>
-                        <span className={language.TITLE === LANGUAGE.KAZ.TITLE ? 'selected_unit' : ''}>{LANGUAGE.KAZ.TITLE}</span>
-                    </button>
-                    <button onClick={() => handleImageButton(LANGUAGE.KAZ)}>
-                        <span>&#x21BB;</span>
-                    </button>
-                    <div className='timeContainer'>
-                        <Speech/>
-                    </div>
-                </div>
+              <WeatherMenu/>
             </div>
         </form>
     );

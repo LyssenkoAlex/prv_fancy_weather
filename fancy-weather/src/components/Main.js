@@ -4,17 +4,12 @@ import Weather from "./Weather";
 import WeatherForecast from "./WeatherForcast";
 import {useDispatch, useSelector} from "react-redux";
 import {getLocation} from "../api/IPInfo";
-import {changeLocation, photoUrls} from "../state/Actions";
-import {getImages} from "../api/Images";
-import {getDayDayPeriod, getSeason, updateBackgroundImage} from "../constraints/unitls";
+import {changeLocation} from "../state/Actions";
 import Map from "./Map";
 
 const Main = () => {
     const locationState = useSelector(state => state.location);
-    const images = useSelector(state => state.photoUrl);
-    const weather = useSelector(state => state.weather);
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         async function updateLocation() {
