@@ -6,19 +6,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {getLocation} from "../api/IPInfo";
 import {changeLocation, photoUrls} from "../state/Actions";
 import {getImages} from "../api/Images";
-import {getDayDayPeriod, getSeason} from "../constraints/unitls";
+import {getDayDayPeriod, getSeason, updateBackgroundImage} from "../constraints/unitls";
 import Map from "./Map";
 
 const Main = () => {
-    const location = useSelector(state => state.location);
-    const images = useSelector(state => state.photosUrl);
-    const dispatch = useDispatch();
+    const locationState = useSelector(state => state.location);
+    const images = useSelector(state => state.photoUrl);
     const weather = useSelector(state => state.weather);
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
-        async function updateLocationImage() {
-            if (location.lat === undefined) {
+        async function updateLocation() {
+            if (locationState.lat === undefined) {
                 let location = await getLocation();
                     dispatch(changeLocation({
                         name: `${location.region} , ${location.city}`,
@@ -26,19 +26,9 @@ const Main = () => {
                         lng: location.loc.split(',')[1],
                     }))
             }
-            let imageArray = await getImages({
-                city: location.name,
-                // weather: weather.main,
-                season: getSeason(),
-                dayPeriod: getDayDayPeriod(weather.timezone_offset)
-            });
-            dispatch(photoUrls(imageArray))
-            updateBackgroundImage(images[Math.floor(Math.random() * Math.floor(images.length))].url_h)
         }
-            updateLocationImage();
-
-
-    }, [location, weather]);
+            updateLocation();
+    }, []);
 
 
     return (
@@ -55,11 +45,6 @@ const Main = () => {
     );
 }
 
-function updateBackgroundImage (url) {
-        const bcgEL = document.querySelector('.sunny');
-        bcgEL.style.background = `url(${url}) no-repeat center center fixed`;
-        bcgEL.style.backgroundSize = 'cover';
-        bcgEL.style.overflow = 'hidden';
-}
+
 
 export default Main;

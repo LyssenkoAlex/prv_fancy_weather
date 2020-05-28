@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {changeLanguage, changeLocation, changeUnits, recalculateTemp, weatherForecast} from '../state/Actions';
-import {LANGUAGE, UNIT} from "../constraints/unitls";
+import {LANGUAGE, UNIT, updateBackgroundImage} from "../constraints/unitls";
 import {getTranslation} from "../api/Translation";
 import Time from "./Time";
 import Speech from "./Speech";
@@ -16,6 +16,7 @@ const SearchLocationInput = () => {
     const language = useSelector(state => state.language);
     const weather = useSelector(state => state.weather);
     const location = useSelector(state => state.location);
+    const images = useSelector(state => state.photoUrl);
 
 
     const loadScript = (url, callback) => {
@@ -78,7 +79,7 @@ const SearchLocationInput = () => {
     }
 
     const handleImageButton = async(e) => {
-
+         updateBackgroundImage(images[Math.floor(Math.random() * Math.floor(images.length))].url_h)
     }
 
 

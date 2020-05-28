@@ -91,3 +91,9 @@ export const WEATHER_CONDITIONS = {
 
 };
 
+export const  updateBackgroundImage = (url) => {
+    const bcgEL = document.querySelector('.sunny');
+    bcgEL.style.background = `url(${url}) no-repeat center center fixed`;
+    bcgEL.style.backgroundSize = 'cover';
+    bcgEL.style.overflow = 'hidden';
+}

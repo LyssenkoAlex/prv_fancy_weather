@@ -1,8 +1,15 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {getWeather} from "../api/Weather";
-import {weatherDaily, weatherForecast} from '../state/Actions';
-import {TRANS_WORDS, WEATHER_CONDITIONS} from "../constraints/unitls";
+import {photoUrls, weatherDaily, weatherForecast} from '../state/Actions';
+import {
+    getDayDayPeriod,
+    getSeason,
+    TRANS_WORDS,
+    updateBackgroundImage,
+    WEATHER_CONDITIONS
+} from "../constraints/unitls";
+import {getImages} from "../api/Images";
 
 
 const Weather = () => {
@@ -10,6 +17,7 @@ const Weather = () => {
     const weather = useSelector(state => state.weather);
     const unit = useSelector(state => state.unit);
     const language = useSelector(state => state.language);
+    const imagesState = useSelector(state => state.photoUrl);
 
     const dispatch = useDispatch();
 
@@ -19,23 +27,43 @@ const Weather = () => {
                 lat: location.lat,
                 lng: location.lng,
                 language: 'RU',
-                unit:unit.NAME
+                unit: unit.NAME
             }).then((weather) => {
                 console.log('weather: ', weather)
-                dispatch(weatherForecast({description:weather.current.weather[0].description
-                    , temp:Math.round(weather.current.temp)
-                    , feels_like:Math.round(weather.current.feels_like)
-                    , wind_speed:weather.current.wind_speed
-                    , humidity:weather.current.humidity
-                    , main:weather.current.weather[0].main
-                    , timezone:weather.timezone
-                    , timezone_offset:weather.timezone_offset
-                    , icon:weather.current.weather[0].icon
+                dispatch(weatherForecast({
+                    description: weather.current.weather[0].description
+                    , temp: Math.round(weather.current.temp)
+                    , feels_like: Math.round(weather.current.feels_like)
+                    , wind_speed: weather.current.wind_speed
+                    , humidity: weather.current.humidity
+                    , main: weather.current.weather[0].main
+                    , timezone: weather.timezone
+                    , timezone_offset: weather.timezone_offset
+                    , icon: weather.current.weather[0].icon
                 }))
                 let dailyWeather = [];
                 weather.daily.slice(1, 5).forEach((day) => {
-                    dailyWeather.push({date:new Date(day.dt * 1000), eve:Math.round(day.temp.eve), main:day.weather[0].main, icon:day.weather[0].icon})
+                    dailyWeather.push({
+                        date: new Date(day.dt * 1000),
+                        eve: Math.round(day.temp.eve),
+                        main: day.weather[0].main,
+                        icon: day.weather[0].icon
+                    })
                 })
+
+                getImages({
+                    city: location.name,
+                    season: getSeason(),
+                    dayPeriod: getDayDayPeriod(weather.timezone_offset)
+                }).then((imagesArray) => {
+                    dispatch(photoUrls(imagesArray));
+                    console.log('imagesState: ', imagesState)
+                    console.log('imagesArray: ', imagesArray)
+                    if(imagesState.length > 0) {
+                        updateBackgroundImage(imagesState[Math.floor(Math.random() * Math.floor(imagesState.length))].url_h)
+                    }
+                })
+
                 dispatch(weatherDaily(dailyWeather))
             });
         }
@@ -52,7 +80,9 @@ const Weather = () => {
             <div className='weatherDetails'>
                 <span>{weather.description}</span>
                 <div className='img_wrapper'>
-                <img src={WEATHER_CONDITIONS[weather.main] ===  undefined ? '#' : WEATHER_CONDITIONS[weather.main].ICON} alt={weather.main} className='imgContainer'/>
+                    <img
+                        src={WEATHER_CONDITIONS[weather.main] === undefined ? '#' : WEATHER_CONDITIONS[weather.main].ICON}
+                        alt={weather.main} className='imgContainer'/>
                 </div>
                 <span>{TRANS_WORDS.FEELS_LIKE[language.TITLE]}: {weather.feels_like}{unit.SIGN}</span>
                 <ul>

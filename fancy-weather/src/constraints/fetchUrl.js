@@ -33,7 +33,7 @@ export const getImageByCityURL = (config) => {
 
 export const getFlickerImage = (config) => {
     return `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKER_KEY}&tags=${config.season},${config.dayPeriod},${config.city}&tag_mode=and
-    &extras=url_h&format=json&nojsoncallback=1&per_page=5
+    &extras=url_h&format=json&nojsoncallback=1&per_page=25
 `
 }
 

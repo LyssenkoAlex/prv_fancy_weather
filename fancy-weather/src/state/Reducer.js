@@ -14,12 +14,13 @@ const initialState = {
     weather:{},
     unit:UNIT.METRIC,
     weatherDaily:[],
-    photosUrl:[]
+    photoUrl:[]
 };
 
 
 
 function directorsRootReducer(state = initialState, action) {
+    console.log('action', action)
     switch (action.type) {
         case LOCATION :
             return Object.assign({}, state, {location:action.location});
@@ -39,7 +40,7 @@ function directorsRootReducer(state = initialState, action) {
         case WEATHER_DAILY:
             return Object.assign({}, state, {weatherDaily:action.weatherDaily});
         case PHOTO_URLS:
-            return Object.assign({}, state, {photosUrl:action.photoUrl});
+            return Object.assign({}, state, {photoUrl:[...action.photoUrl]});
         default:
             return state;
     }
