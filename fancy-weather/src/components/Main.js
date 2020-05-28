@@ -4,13 +4,14 @@ import Weather from "./Weather";
 import WeatherForecast from "./WeatherForcast";
 import {useDispatch, useSelector} from "react-redux";
 import {getLocation} from "../api/IPInfo";
-import {changeLocation} from "../state/Actions";
+import {changeLocation, photoUrls} from "../state/Actions";
 import {getImages} from "../api/Images";
 import {getDayDayPeriod, getSeason} from "../constraints/unitls";
 import Map from "./Map";
 
 const Main = () => {
     const location = useSelector(state => state.location);
+    const images = useSelector(state => state.photosUrl);
     const dispatch = useDispatch();
     const weather = useSelector(state => state.weather);
 
@@ -25,16 +26,16 @@ const Main = () => {
                         lng: location.loc.split(',')[1],
                     }))
             }
-            let image = await getImages({
+            let imageArray = await getImages({
                 city: location.name,
-                weather: weather.main,
+                // weather: weather.main,
                 season: getSeason(),
                 dayPeriod: getDayDayPeriod(weather.timezone_offset)
             });
-            console.log('image.urls.regular: ', image.urls.regular)
-            updateBackgroundImage(image.urls.regular)
+            dispatch(photoUrls(imageArray))
+            updateBackgroundImage(images[Math.floor(Math.random() * Math.floor(images.length))].url_h)
         }
-        updateLocationImage();
+            updateLocationImage();
 
 
     }, [location, weather]);
@@ -58,7 +59,6 @@ function updateBackgroundImage (url) {
         const bcgEL = document.querySelector('.sunny');
         bcgEL.style.background = `url(${url}) no-repeat center center fixed`;
         bcgEL.style.backgroundSize = 'cover';
-        // bcgEL.style.height = '100%';
         bcgEL.style.overflow = 'hidden';
 }
 

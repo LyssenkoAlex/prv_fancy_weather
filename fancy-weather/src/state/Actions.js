@@ -4,6 +4,7 @@ export const UNIT_CHANGE = 'UNIT_CHANGE';
 export const RECALCULATE_TEMP = 'RECALCULATE_TEMP';
 export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 export const WEATHER_DAILY = 'WEATHER_DAILY';
+export const PHOTO_URLS = 'PHOTO_URLS';
 
 
 export const changeLocation = (location) => {
@@ -28,4 +29,8 @@ export const changeLanguage = (language) => {
 
 export const weatherDaily = (weather) => {
     return {type:WEATHER_DAILY, weatherDaily:weather}
+}
+
+export const photoUrls = (photos) => {
+    return {type:PHOTO_URLS, photoUrl:photos}
 }

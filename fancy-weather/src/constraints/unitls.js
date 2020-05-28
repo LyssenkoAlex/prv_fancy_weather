@@ -45,7 +45,7 @@ export const temperatureConventor = (unitName, temp) => {
 export const getSeason = () => {
     const today = new Date();
     const seasonItem = Math.floor((today.getMonth() / 12 * 4)) % 4;
-    return ['Summer', 'Autumn', 'Winter', 'Spring'][seasonItem];
+    return ['Winter', 'Spring', 'Summer', 'Autumn'][seasonItem];
 };
 
 export const getDayDayPeriod = (timeZone) => {

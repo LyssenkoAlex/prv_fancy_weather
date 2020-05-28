@@ -6,7 +6,11 @@
 .input_wrapper {
   display: grid;
   grid-template-columns: 2fr 3fr;
+  margin-bottom: 1em;
 }
 .menu_wrapper {
   display: flex;
+  background-color: black;
+  opacity: 0.8;
+  border-radius: 2%;
 }

@@ -2,7 +2,7 @@ import {
     LOCATION,
     WEATHER,
     UNIT_CHANGE,
-    RECALCULATE_TEMP, LANGUAGE_CHANGE, WEATHER_DAILY
+    RECALCULATE_TEMP, LANGUAGE_CHANGE, WEATHER_DAILY, PHOTO_URLS
 } from "./Actions";
 import {LANGUAGE, temperatureConventor, UNIT} from "../constraints/unitls";
 
@@ -13,7 +13,8 @@ const initialState = {
     location: {},
     weather:{},
     unit:UNIT.METRIC,
-    weatherDaily:[]
+    weatherDaily:[],
+    photosUrl:[]
 };
 
 
@@ -37,6 +38,8 @@ function directorsRootReducer(state = initialState, action) {
             return Object.assign({}, state, {language:action.language});
         case WEATHER_DAILY:
             return Object.assign({}, state, {weatherDaily:action.weatherDaily});
+        case PHOTO_URLS:
+            return Object.assign({}, state, {photosUrl:action.photoUrl});
         default:
             return state;
     }

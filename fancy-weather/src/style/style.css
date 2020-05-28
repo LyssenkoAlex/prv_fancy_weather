@@ -19,7 +19,7 @@ input, button, .timeContainer {
   border-right: none;
   color: #fff;
   margin: 0.5em;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 input:hover, button:hover, .timeContainer:hover {
   opacity: 0.5;
@@ -46,10 +46,14 @@ ul li:not(:first-child) {
 .input_wrapper {
   display: grid;
   grid-template-columns: 2fr 3fr;
+  margin-bottom: 1em;
 }
 
 .menu_wrapper {
   display: flex;
+  background-color: black;
+  opacity: 0.8;
+  border-radius: 2%;
 }
 
 .info_card {
@@ -69,9 +73,8 @@ ul li:not(:first-child) {
 .weather {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: aliceblue;
+  grid-gap: 5px;
   opacity: 0.8;
-  border-radius: 2%;
 }
 
 .temperature {
@@ -79,6 +82,8 @@ ul li:not(:first-child) {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: aliceblue;
+  border-radius: 2%;
 }
 
 .weatherDetails {
@@ -92,7 +97,6 @@ ul li:not(:first-child) {
 .weatherForeCast {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  background-color: aliceblue;
   opacity: 0.8;
   border-radius: 2%;
   grid-gap: 5px;

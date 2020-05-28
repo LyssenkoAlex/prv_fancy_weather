@@ -77,6 +77,10 @@ const SearchLocationInput = () => {
         dispatch(weatherForecast(weather))
     }
 
+    const handleImageButton = async(e) => {
+
+    }
+
 
     useEffect(() => {
         loadScript(
@@ -111,6 +115,9 @@ const SearchLocationInput = () => {
                     </button>
                     <button onClick={() => handleLanguageButton(LANGUAGE.KAZ)}>
                         <span className={language.TITLE === LANGUAGE.KAZ.TITLE ? 'selected_unit' : ''}>{LANGUAGE.KAZ.TITLE}</span>
+                    </button>
+                    <button onClick={() => handleImageButton(LANGUAGE.KAZ)}>
+                        <span>&#x21BB;</span>
                     </button>
                     <div className='timeContainer'>
                         <Speech/>
