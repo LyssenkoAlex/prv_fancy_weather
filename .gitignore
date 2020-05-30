@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+fancy-weather/.idea/.gitignore
+fancy-weather/.idea/fancy-weather.iml
+fancy-weather/.idea/jsLibraryMappings.xml
+fancy-weather/.idea/misc.xml
+fancy-weather/.idea/modules.xml
+fancy-weather/.idea/vcs.xml
+fancy-weather/.idea/watcherTasks.xml
+fancy-weather/.idea/inspectionProfiles/Project_Default.xml
+fancy-weather/.idea/jsLinters/eslint.xml
