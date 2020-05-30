@@ -1,0 +1,44 @@
+html {
+  font-size: calc(1em + 1vw);
+}
+
+body {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+input {
+  width: 100%;
+}
+input, button, .timeContainer {
+  background-color: transparent;
+  border: 1px dotted #fff;
+  color: #fff;
+  margin: 0.5rem;
+  font-size: 0.7rem;
+  &:hover{
+    opacity: 0.5;
+  }
+  & > span{
+    margin: 0.2rem;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  display:inline;
+  &:not(:first-child) {
+    margin-left: 0.5rem;
+  }
+}
+
+
