@@ -1,7 +1,8 @@
-import {getLocationURL} from "../constraints/fetchUrl";
+import { getLocationURL } from '../constraints/fetchUrl';
 
-export const getOpenCage = async (city) => {
-    const response = await fetch(getLocationURL(city));
-    return response.json();
+const getOpenCage = async (city) => {
+	const response = await fetch(getLocationURL(city));
+	return response.json();
 };
 
+export default getOpenCage;

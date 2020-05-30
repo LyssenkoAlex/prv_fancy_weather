@@ -7,37 +7,31 @@ export const MAP_BOX_KEY = 'pk.eyJ1IjoibHlzc2Vua29hbGV4IiwiYSI6ImNrM2ZxcWF3MDAwY
 const FLICKER_KEY = '2c4db4310cd6407c99fd12d0194dcea3';
 const OPEN_CAGE_KEY = '7c97c13402104268b092469e9177e33e';
 
-
-
-
-
 export const getWeatherByCoordinatesURL = (config) => {
-    return `https://api.openweathermap.org/data/2.5/onecall?lat=${config.lat}&lon=${config.lng}&lang=${config.language}&exclude=minutely,hourly&units=${config.unit}&APPID=${WEATHER_KEY}`;
-}
+	return `https://api.openweathermap.org/data/2.5/onecall?lat=${config.lat}&lon=${config.lng}&lang=${config.language}&exclude=minutely,hourly&units=${config.unit}&APPID=${WEATHER_KEY}`;
+};
 
 export const getUserLocationCoordinates = () => {
-    return `https://ipinfo.io/?token=${IP_INFO}`;
-}
-
+	return `https://ipinfo.io/?token=${IP_INFO}`;
+};
 
 export const getPlacesByFirstLetters = (config) => {
-    return `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Alm&key=${GOOGLE_PLACES}&sessiontoken=${config.session}`;
-}
+	return `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Alm&key=${GOOGLE_PLACES}&sessiontoken=${config.session}`;
+};
 
-export const getYandexTranslateURL= (config) => {
-    return `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${YANDEX_KEY}&text=${config.text}&lang=${config.from_lang}-${config.to_lang}&format=plain`;
-}
+export const getYandexTranslateURL = (config) => {
+	return `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${YANDEX_KEY}&text=${config.text}&lang=${config.from_lang}-${config.to_lang}&format=plain`;
+};
 
 export const getImageByCityURL = (config) => {
-    return `https://api.unsplash.com/photos/random?query=town,${config.weather},${config.season},${config.dayPeriod},${config.city}&client_id=${UNSPLASH_KEY}`;
-}
+	return `https://api.unsplash.com/photos/random?query=town,${config.weather},${config.season},${config.dayPeriod},${config.city}&client_id=${UNSPLASH_KEY}`;
+};
 
 export const getFlickerImage = (config) => {
-    return `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKER_KEY}&tags=${config.season},${config.dayPeriod},${config.city}&tag_mode=and
-    &extras=url_h&format=json&nojsoncallback=1&per_page=25`
-}
+	return `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKER_KEY}&tags=${config.season},${config.dayPeriod},${config.city}&tag_mode=and
+    &extras=url_h&format=json&nojsoncallback=1&per_page=25`;
+};
 
 export const getLocationURL = (city) => {
-    return `https://api.opencagedata.com/geocode/v1/json?q=${city}&language=en&key=${OPEN_CAGE_KEY}`;
-}
-
+	return `https://api.opencagedata.com/geocode/v1/json?q=${city}&language=en&key=${OPEN_CAGE_KEY}`;
+};
