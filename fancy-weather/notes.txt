@@ -1,0 +1,8 @@
+https://codesandbox.io/s/react-weather-widget-o5lv7?from-embed=&file=/src/index.js
+
+https://blog.jetbrains.com/webstorm/2013/06/cors-control-in-jetbrains-chrome-extension/
+https://medium.com/better-programming/the-best-practice-with-google-place-autocomplete-api-on-react-939211e8b4ce
+https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete?hl=ru
+
+
+https://github.com/rolling-scopes-school/tasks/blob/master/tasks/fancy-weather.md

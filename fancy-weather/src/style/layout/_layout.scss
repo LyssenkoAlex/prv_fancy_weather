@@ -1,0 +1,33 @@
+.wrapper {
+  display: grid;
+  grid-gap: 5px;
+  margin: 1em;
+}
+.input_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1em;
+  grid-gap: 10px;
+}
+.menu_wrapper {
+  display: flex;
+  background-color: black;
+  opacity: 0.8;
+  border-radius: 2%;
+}
+
+.search_container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 768px) {
+
+  .input_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 1em;
+    grid-gap: 10px;
+  }
+}
+
