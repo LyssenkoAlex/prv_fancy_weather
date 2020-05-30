@@ -34,3 +34,5 @@ export const weatherDaily = (weather) => {
 export const photoUrls = (photos) => {
     return {type:PHOTO_URLS, photoUrl:photos}
 }
+
+

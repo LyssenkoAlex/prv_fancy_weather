@@ -8,7 +8,7 @@ import SmokeIcon from '../assets/weather_icons/50d.png';
 import FogIcon from '../assets/weather_icons/50d.png';
 
 export const UNIT = { IMPERIAL: { TYPE: 'imperial', SIGN: '°F', NAME: 'IMPERIAL' }, METRIC: { TYPE: 'metric', SIGN: '°C', NAME: 'METRIC' } };
-export const LANGUAGE = { RU: { TITLE: 'RU', VALUE: 'ru' }, ENG: { TITLE: 'ENG', VALUE: 'en' }, KAZ: { TITLE: 'KAZ', VALUE: 'kk' } };
+export const LANGUAGE = { RU: { TITLE: 'RU', VALUE: 'ru', REC:'ru' }, ENG: { TITLE: 'ENG', VALUE: 'en', REC:'en-US' }, KAZ: { TITLE: 'KAZ', VALUE: 'kk', REC:'ru' } };
 
 export const TRANS_WORDS = {
     WEATHER: { RU: 'погода', ENG: 'weather', KAZ: 'aýa-raıy' },

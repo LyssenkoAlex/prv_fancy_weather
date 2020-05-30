@@ -55,9 +55,7 @@ const WeatherMenu = () => {
             <button onClick={() => handleImageButton(LANGUAGE.KAZ)}>
                 <span>&#x21BB;</span>
             </button>
-            <div className='timeContainer'>
                 <Speech/>
-            </div>
         </div>
     );
 

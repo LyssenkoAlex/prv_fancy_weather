@@ -45,7 +45,7 @@ ul li:not(:first-child) {
 
 .input_wrapper {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 2fr 4fr;
   margin-bottom: 1em;
 }
 
@@ -78,12 +78,18 @@ ul li:not(:first-child) {
 }
 
 .temperature {
-  font-size: 4em;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   background-color: aliceblue;
   border-radius: 2%;
+}
+.temperature_temp {
+  font-size: 4em;
+}
+.temperature_place {
+  font-size: 1em;
 }
 
 .weatherDetails {
@@ -129,12 +135,30 @@ ul li:not(:first-child) {
   color: bisque;
 }
 
+.voice_search {
+  color: white;
+  display: flex;
+  align-items: baseline;
+  font-size: 0.7em;
+  margin: 0.5em;
+}
+
 .forecastDetails {
   display: flex;
   flex-flow: column;
   align-items: center;
   background-color: darkslategrey;
   border-radius: 2%;
+}
+
+.mic_on {
+  color: transparent;
+  text-shadow: 0 0 0 red;
+}
+
+.mic_off {
+  color: transparent;
+  text-shadow: 0 0 0 white;
 }
 
 /*# sourceMappingURL=style.css.map */

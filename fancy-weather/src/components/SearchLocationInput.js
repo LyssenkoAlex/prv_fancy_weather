@@ -51,6 +51,7 @@ const SearchLocationInput = () => {
 
         const addressObject = autoComplete.getPlace();
         const query = addressObject.formatted_address;
+        console.log('query: ', query)
         updateQuery(query);
         dispatch(changeLocation({
             name: addressObject.name,
@@ -68,7 +69,7 @@ const SearchLocationInput = () => {
 
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
-            <div className='input_wrapper'>
+            <div className='input_wrapper menu_wrapper'>
                 <input
                     ref={autoCompleteRef}
                     onChange={event => setQuery(event.target.value)}

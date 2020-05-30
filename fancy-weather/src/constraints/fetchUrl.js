@@ -5,6 +5,7 @@ const YANDEX_KEY = 'trnsl.1.1.20191209T024748Z.9eb2df4f5e1d2e9a.df86f4d226cbc1e6
 const UNSPLASH_KEY = '71d2ca753c7333a8e0b3d60ed1b8bdeb9ab30030606c6eae04bb6836ead2abe9';
 export const MAP_BOX_KEY = 'pk.eyJ1IjoibHlzc2Vua29hbGV4IiwiYSI6ImNrM2ZxcWF3MDAwYjgzY3NlNndmb3p2c2EifQ.Aaf7-bWQOS3CcOgLVRs9gA';
 const FLICKER_KEY = '2c4db4310cd6407c99fd12d0194dcea3';
+const OPEN_CAGE_KEY = '7c97c13402104268b092469e9177e33e';
 
 
 
@@ -33,7 +34,10 @@ export const getImageByCityURL = (config) => {
 
 export const getFlickerImage = (config) => {
     return `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKER_KEY}&tags=${config.season},${config.dayPeriod},${config.city}&tag_mode=and
-    &extras=url_h&format=json&nojsoncallback=1&per_page=25
-`
+    &extras=url_h&format=json&nojsoncallback=1&per_page=25`
+}
+
+export const getLocationURL = (city) => {
+    return `https://api.opencagedata.com/geocode/v1/json?q=${city}&language=en&key=${OPEN_CAGE_KEY}`;
 }
 

@@ -20,7 +20,6 @@ const initialState = {
 
 
 function directorsRootReducer(state = initialState, action) {
-    console.log('action', action)
     switch (action.type) {
         case LOCATION :
             return Object.assign({}, state, {location:action.location});

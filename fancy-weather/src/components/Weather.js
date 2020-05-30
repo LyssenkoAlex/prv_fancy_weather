@@ -28,7 +28,6 @@ const Weather = () => {
                 language: 'RU',
                 unit: unit.NAME
             }).then((weather) => {
-                console.log('weather: ', weather)
                 dispatch(weatherForecast({
                     description: weather.current.weather[0].description
                     , temp: Math.round(weather.current.temp)
@@ -56,7 +55,7 @@ const Weather = () => {
                     dayPeriod: getDayDayPeriod(weather.timezone_offset)
                 }).then((imagesArray) => {
                     dispatch(photoUrls(imagesArray));
-                    if(imagesArray.length > 0) {
+                    if (imagesArray.length > 0) {
                         updateBackgroundImage(imagesArray[Math.floor(Math.random() * Math.floor(imagesArray.length))].url_h)
                     }
                 })
@@ -72,7 +71,12 @@ const Weather = () => {
     return (
         <div className='weather'>
             <div className='temperature'>
-                {weather.temp}{unit.SIGN}
+                <div className='temperature_place'>
+                    {location.name}
+                </div>
+                <div className='temperature_temp'>
+                    {weather.temp}{unit.SIGN}
+                </div>
             </div>
             <div className='weatherDetails'>
                 <span>{weather.description}</span>

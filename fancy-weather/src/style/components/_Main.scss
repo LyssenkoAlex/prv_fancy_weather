@@ -19,13 +19,23 @@
   opacity: 0.8;
 
 }
+
 .temperature {
-  font-size: 4em;
+
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   background-color: aliceblue;
   border-radius: 2%;
+
+  &_temp {
+    font-size: 4em;
+  }
+
+  &_place {
+    font-size: 1em;
+  }
 }
 
 .weatherDetails {

@@ -1,5 +1,9 @@
 import * as React from "react";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getOpenCage} from "../api/openCageData";
+import {changeLocation} from "../state/Actions";
+import {Recognizer} from '../api/Recognizer'
 
 
 //------------------------SPEECH RECOGNITION-----------------------------
@@ -8,95 +12,66 @@ import {useEffect, useState} from "react";
 //------------------------COMPONENT-----------------------------
 
 const Speech = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    const recognition = new SpeechRecognition()
-
-    recognition.continous = true
-    recognition.interimResults = true
-    recognition.lang = 'en-US'
+    const language = useSelector(state => state.language);
     const [listening, setListening] = useState(false)
-
+    const [recognizer] = useState(new Recognizer())
+    const [speech, setSpeech] = useState('RECORDING OFF')
+    const [location, setLocation] = useState(null)
+    const dispatch = useDispatch();
 
     const toggleListen = () => {
-        setListening(!listening)
-        if(listening) {
-            handleListen()
-        }
-    }
-
-    const handleListen = () => {
-
-        console.log('listening?', listening)
-
-        if (listening) {
-            recognition.start()
-            recognition.onend = () => {
-                console.log("...continue listening...")
-                recognition.start()
-            }
-
+        if (!recognizer.isRecognizing) {
+            setListening(true)
+            setSpeech('START TALK')
+            start();
         } else {
-            recognition.stop()
-            recognition.onend = () => {
-                console.log("Stopped listening per click")
-            }
+            setListening(false)
+            setSpeech('RECORDING OFF')
+            stop();
         }
-
-        recognition.onstart = () => {
-            console.log("Listening!")
-        }
-
-        let finalTranscript = ''
-        recognition.onresult = event => {
-            let interimTranscript = ''
-
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                const transcript = event.results[i][0].transcript;
-                if (event.results[i].isFinal) finalTranscript += transcript + ' ';
-                else interimTranscript += transcript;
-            }
-            // document.getElementById('interim').innerHTML = interimTranscript
-            // document.getElementById('final').innerHTML = finalTranscript
-
-            //-------------------------COMMANDS------------------------------------
-
-            const transcriptArr = finalTranscript.split(' ')
-            const stopCmd = transcriptArr.slice(-3, -1)
-            console.log('stopCmd', stopCmd)
-            document.getElementById('idInputLocation').innerHTML = stopCmd[0]
-
-            if (stopCmd[0] === 'stop' && stopCmd[1] === 'listening') {
-                recognition.stop()
-                recognition.onend = () => {
-                    console.log('Stopped listening per command')
-                    const finalText = transcriptArr.slice(0, -3).join(' ')
-                    document.getElementById('idInputLocation').innerHTML = finalText
-                    console.log('finalText: ', finalText)
-                }
-            }
-        }
-
-        //-----------------------------------------------------------------------
-
-        recognition.onerror = event => {
-            console.log("Error occurred in recognition: " + event.error)
-        }
-
     }
+
+    const start = () => {
+        recognizer.start(setLocation);
+        setSpeech('RECORDING STARTED')
+    }
+
+    const stop = () => {
+        recognizer.stop();
+        setSpeech('RECORDING STOPPED')
+    }
+
+    useEffect(() => {
+
+        async function updateWeather() {
+            if(location !== null) {
+                let cageData = await getOpenCage(location)
+                console.log('cageData', cageData);
+                dispatch(changeLocation({
+                    name: cageData.results[0].formatted,
+                    lat: cageData.results[0].geometry.lat,
+                    lng: cageData.results[0].geometry.lng,
+                }))
+            }
+        }
+        updateWeather();
+    }, [location]);
+
 
     return (
-        <div>
-            <button id='microphone-btn' onClick={() => toggleListen()}>&#127908;</button>
+        <div className='voice_search'>
+            <button id='microphone-btn' onClick={() => toggleListen()}><span
+                className={listening ? 'mic_on' : 'mic_off'}>&#127908;</span></button>
             {/*<div id='interim'/>*/}
-            {/*<div id='final'/>*/}
-         </div>
+            <div id='final'>{location === null ? speech : location}</div>
+            {/*<div id='final'>{speech}</div>*/}
+        </div>
     )
 }
 
 export default Speech
 
 
-//-------------------------CSS------------------------------------
 
 
 
