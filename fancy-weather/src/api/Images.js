@@ -10,7 +10,6 @@ export const getImages = async (config) => {
         return  photos.photos.photo.filter((e) => e.url_h !== undefined);
     }
     catch (e) {
-        console.log('error catch')
         return {urls:{regular:errorImage}}
     }
 };

@@ -42,11 +42,9 @@ const Speech = () => {
     useEffect(() => {
 
         async function updateWeather() {
-            console.log('sppech: ', location)
             if (location !== null && location.toUpperCase() !== VOICE_COMMANDS.SAY_WEATHER.VALUE.toUpperCase()) {
                 let cageData = await getOpenCage(location)
                 if (cageData.results !== undefined && cageData.results.length > 0) {
-                    console.log('cageData', cageData);
                     dispatch(changeLocation({
                         name: cageData.results[0].formatted,
                         lat: cageData.results[0].geometry.lat,

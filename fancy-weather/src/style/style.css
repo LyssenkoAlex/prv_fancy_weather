@@ -66,6 +66,14 @@ ul li:not(:first-child) {
   grid-template-columns: 1fr;
 }
 
+@media (max-width: 768px) {
+  .input_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 1em;
+    grid-gap: 10px;
+  }
+}
 .info_card {
   border-radius: 0.5rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16), 0 3px 5px rgba(0, 0, 0, 0.23);
@@ -141,6 +149,23 @@ ul li:not(:first-child) {
   vertical-align: center;
 }
 
+@media (max-width: 768px) {
+  .info_card {
+    border-radius: 0.5rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.16), 0 3px 5px rgba(0, 0, 0, 0.23);
+    padding: 0.1rem 0.1rem 0.1rem;
+    text-align: center;
+    opacity: 1;
+    z-index: 100;
+  }
+
+  .weather {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    opacity: 0.8;
+  }
+}
 .selected_unit {
   color: bisque;
 }

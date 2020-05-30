@@ -25,13 +25,11 @@ export class Recognizer {
         };
         this.recognition.start();
         this.isRecognizing = true;
-        console.log("Started recognition");
     }
 
     stop() {
         this.recognition.abort();
         this.isRecognizing = false;
-        console.log("Stopped recognition");
     }
 
     onResult(event, handler) {
@@ -47,6 +45,5 @@ export class Recognizer {
         if(interim_transcript.length > 2) {
             handler(interim_transcript)
         }
-        console.log(interim_transcript);
     }
 }

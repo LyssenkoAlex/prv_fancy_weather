@@ -51,7 +51,6 @@ const SearchLocationInput = () => {
 
         const addressObject = autoComplete.getPlace();
         const query = addressObject.formatted_address;
-        console.log('query: ', query)
         updateQuery(query);
         dispatch(changeLocation({
             name: addressObject.name,
@@ -67,7 +66,6 @@ const SearchLocationInput = () => {
         );
     }, []);
 
-    console.log('loccation: ', location)
 
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
