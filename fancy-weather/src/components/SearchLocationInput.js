@@ -67,17 +67,27 @@ const SearchLocationInput = () => {
         );
     }, []);
 
+    console.log('loccation: ', location)
+
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
-            <div className='input_wrapper menu_wrapper'>
-                <input
-                    ref={autoCompleteRef}
-                    onChange={event => setQuery(event.target.value)}
-                    placeholder={location.name}
-                    value={query}
-                    id='idInputLocation'
-                />
-              <WeatherMenu/>
+            <div className='input_wrapper'>
+                <div className='search_container'>
+                    <div className='menu_wrapper timeContainer'>
+                        <input
+                            ref={autoCompleteRef}
+                            onChange={event => setQuery(event.target.value)}
+                            placeholder={location.name}
+                            value={query}
+                            id='idInputLocation'
+                        />
+
+                    </div>
+                    <div className='menu_wrapper timeContainer'>
+                        <span>Lat: {Number.parseInt(location.lat).toFixed(2)}</span><span>&nbsp;Lng: {Number.parseInt(location.lng).toFixed(2)}</span>
+                    </div>
+                </div>
+                <WeatherMenu/>
             </div>
         </form>
     );

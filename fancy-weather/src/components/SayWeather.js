@@ -1,5 +1,6 @@
 import React from "react";
 import {useSelector} from "react-redux";
+import {sayText} from "../api/SayWeather";
 
 
 
@@ -8,10 +9,9 @@ const SayWeather = () => {
     const weather = useSelector(state => state.weather);
 
     const  speak = () => {
-        const message = new SpeechSynthesisUtterance();
-        message.lang = "ru-RU";
-        message.text = `Температура ${weather.temp} ощущается ${weather.feels_like} скорость ветра ${weather.wind_speed}`
-        window.speechSynthesis.speak(message);
+        const lang = "ru-RU";
+        const text = `Температура ${weather.temp} ощущается ${weather.feels_like} скорость ветра ${weather.wind_speed}`
+        sayText(text, lang)
     }
 
     return (

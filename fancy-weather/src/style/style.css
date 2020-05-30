@@ -11,18 +11,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input {
+  width: 100%;
+}
+
 input, button, .timeContainer {
   background-color: transparent;
-  border-bottom: 1px dotted #fff;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: 1px dotted #fff;
   color: #fff;
-  margin: 0.5em;
-  font-size: 0.7em;
+  margin: 0.5rem;
+  font-size: 0.7rem;
 }
 input:hover, button:hover, .timeContainer:hover {
   opacity: 0.5;
+}
+input > span, button > span, .timeContainer > span {
+  margin: 0.2rem;
 }
 
 ul {
@@ -45,8 +49,9 @@ ul li:not(:first-child) {
 
 .input_wrapper {
   display: grid;
-  grid-template-columns: 2fr 4fr;
+  grid-template-columns: 1fr 1fr;
   margin-bottom: 1em;
+  grid-gap: 10px;
 }
 
 .menu_wrapper {
@@ -54,6 +59,11 @@ ul li:not(:first-child) {
   background-color: black;
   opacity: 0.8;
   border-radius: 2%;
+}
+
+.search_container {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .info_card {
@@ -138,7 +148,7 @@ ul li:not(:first-child) {
 .voice_search {
   color: white;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   font-size: 0.7em;
   margin: 0.5em;
 }

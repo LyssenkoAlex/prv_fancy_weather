@@ -13,7 +13,7 @@ const Main = () => {
 
     useEffect(() => {
         async function updateLocation() {
-            if (locationState.lat === undefined) {
+            if (locationState.lat === 0 && locationState.lng === 0) {
                 let location = await getLocation();
                     dispatch(changeLocation({
                         name: `${location.region} , ${location.city}`,

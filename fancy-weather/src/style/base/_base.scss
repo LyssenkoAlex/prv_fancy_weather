@@ -13,18 +13,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
 }
-
+input {
+  width: 100%;
+}
 input, button, .timeContainer {
   background-color: transparent;
-  border-bottom: 1px dotted #fff;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: 1px dotted #fff;
   color: #fff;
-  margin: 0.5em;
-  font-size: 0.7em;
+  margin: 0.5rem;
+  font-size: 0.7rem;
   &:hover{
     opacity: 0.5;
+  }
+  & > span{
+    margin: 0.2rem;
   }
 }
 

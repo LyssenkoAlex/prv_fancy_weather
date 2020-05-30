@@ -5,7 +5,6 @@ import {LANGUAGE, UNIT, updateBackgroundImage} from "../constraints/unitls";
 import {getTranslation} from "../api/Translation";
 import Time from "./Time";
 import Speech from "./Speech";
-import SayWeather from "./SayWeather";
 
 
 const WeatherMenu = () => {
@@ -33,31 +32,34 @@ const WeatherMenu = () => {
     }
 
     return (
+        <div className='search_container'>
+            <div className='menu_wrapper timeContainer'>
 
-        <div className='menu_wrapper'>
-            <div className='timeContainer'>
-                <Time/>
-            </div>
-            <button onClick={() => handleClick()}>
-                <span className={unit.NAME === UNIT.IMPERIAL.NAME ? '' : 'selected_unit'}>C°</span>
-                - <span className={unit.NAME === UNIT.IMPERIAL.NAME ? 'selected_unit' : ''}>F°</span>
-            </button>
-            <button onClick={() => handleLanguageButton(LANGUAGE.RU)}>
-                <span className={language.TITLE === LANGUAGE.RU.TITLE ? 'selected_unit' : ''}>{LANGUAGE.RU.TITLE}</span>
-            </button>
-            <button onClick={() => handleLanguageButton(LANGUAGE.ENG)}>
+                <button onClick={() => handleClick()}>
+                    <span className={unit.NAME === UNIT.IMPERIAL.NAME ? '' : 'selected_unit'}>C°</span>
+                    - <span className={unit.NAME === UNIT.IMPERIAL.NAME ? 'selected_unit' : ''}>F°</span>
+                </button>
+                <button onClick={() => handleLanguageButton(LANGUAGE.RU)}>
+                        <span
+                            className={language.TITLE === LANGUAGE.RU.TITLE ? 'selected_unit' : ''}>{LANGUAGE.RU.TITLE}</span>
+                </button>
+                <button onClick={() => handleLanguageButton(LANGUAGE.ENG)}>
                 <span
                     className={language.TITLE === LANGUAGE.ENG.TITLE ? 'selected_unit' : ''}>{LANGUAGE.ENG.TITLE}</span>
-            </button>
-            <button onClick={() => handleLanguageButton(LANGUAGE.KAZ)}>
+                </button>
+                <button onClick={() => handleLanguageButton(LANGUAGE.KAZ)}>
                 <span
                     className={language.TITLE === LANGUAGE.KAZ.TITLE ? 'selected_unit' : ''}>{LANGUAGE.KAZ.TITLE}</span>
-            </button>
-            <button onClick={() => handleImageButton(LANGUAGE.KAZ)}>
-                <span>&#x21BB;</span>
-            </button>
-            <Speech/>
-            <SayWeather/>
+                </button>
+
+            </div>
+            <div className='menu_wrapper timeContainer'>
+                    <Time/>
+                    <button onClick={() => handleImageButton(LANGUAGE.KAZ)}>
+                        <span>&#x21BB;</span>
+                    </button>
+                    <Speech/>
+            </div>
         </div>
     );
 
