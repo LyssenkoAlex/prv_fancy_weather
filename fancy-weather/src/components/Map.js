@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import { MAP_BOX_KEY } from '../constraints/fetchUrl';
 
 const styles = {
