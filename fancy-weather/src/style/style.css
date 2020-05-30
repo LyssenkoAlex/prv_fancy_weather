@@ -161,4 +161,9 @@ ul li:not(:first-child) {
   text-shadow: 0 0 0 white;
 }
 
+.play {
+  color: white;
+  font-size: 1rem;
+}
+
 /*# sourceMappingURL=style.css.map */

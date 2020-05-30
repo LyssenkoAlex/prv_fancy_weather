@@ -5,6 +5,7 @@ import {LANGUAGE, UNIT, updateBackgroundImage} from "../constraints/unitls";
 import {getTranslation} from "../api/Translation";
 import Time from "./Time";
 import Speech from "./Speech";
+import SayWeather from "./SayWeather";
 
 
 const WeatherMenu = () => {
@@ -55,7 +56,8 @@ const WeatherMenu = () => {
             <button onClick={() => handleImageButton(LANGUAGE.KAZ)}>
                 <span>&#x21BB;</span>
             </button>
-                <Speech/>
+            <Speech/>
+            <SayWeather/>
         </div>
     );
 

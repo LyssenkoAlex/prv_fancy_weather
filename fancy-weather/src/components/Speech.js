@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useEffect, useRef, useState} from "react";
+import {useEffect,  useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getOpenCage} from "../api/openCageData";
 import {changeLocation} from "../state/Actions";
@@ -12,7 +12,6 @@ import {Recognizer} from '../api/Recognizer'
 //------------------------COMPONENT-----------------------------
 
 const Speech = () => {
-    const language = useSelector(state => state.language);
     const [listening, setListening] = useState(false)
     const [recognizer] = useState(new Recognizer())
     const [speech, setSpeech] = useState('RECORDING OFF')
